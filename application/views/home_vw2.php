@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Citra display || Home ::</title>
+	<title>Citra display || Home ::MODIF JADI</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap/bootstrap.css');?>">
 	<script type="text/javascript" src="<?=base_url('assets/bootstrap/jQuery-2.1.3.min.js');?>"></script>
 	<script type="text/javascript" src="<?=base_url('assets/bootstrap/bootstrap.js');?>"></script>
