@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Citra display || Home :: BALIKIN</title>
+	<title>:: Home ::</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap/bootstrap.css');?>">
 	<script type="text/javascript" src="<?=base_url('assets/bootstrap/jQuery-2.1.3.min.js');?>"></script>
 	<script type="text/javascript" src="<?=base_url('assets/bootstrap/bootstrap.js');?>"></script>
@@ -66,7 +66,7 @@
 	  </button>
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#"><b>Tokosepiya</b></a>
+	      <a class="navbar-brand" href="#"><b>Logo / Nama</b></a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <form class="navbar-form navbar-right">
@@ -80,9 +80,9 @@
 	        </div>
 	      </form>
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Home</a></li>
-	        <li><a href="#">Page 1</a></li>
-	        <li><a href="#">Page 2</a></li>
+	        <li <?php if(strtolower($this->uri->segment(1)) == "home") echo "class='active'" ?>><a href="#"><b>Home</b></a></li>
+	        <li><a href="<?=base_url('produk');?>"><b>Produk</b></a></li>
+	        <li><a href="#"><b>Tentang Kami</b></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -114,14 +114,14 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="<?=base_url('assets/images/home_vw/slide1.jpg');?>" alt="Chicago">
+						<img src="<?=base_url('assets/images/home_vw/slide2.jpg');?>" alt="Chicago">
 						<div class="carousel-caption">
 							<h3>Title 1</h3>
 							<p>Deskripsi caption 1</p>
 						</div>
 					</div>
 					<div class="item">
-						<img src="<?=base_url('assets/images/home_vw/slide1.jpg');?>" alt="New York">
+						<img src="<?=base_url('assets/images/home_vw/slide3.jpg');?>" alt="New York">
 						<div class="carousel-caption">
 							<h3>Title 1</h3>
 							<p>Deskripsi caption 1</p>

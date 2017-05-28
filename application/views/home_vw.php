@@ -74,21 +74,21 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="<?=base_url('assets/images/home_vw/slide1.jpg');?>" alt="Los Angeles">
+						<img src="<?=base_url('assets/images/home_vw/slide13.jpg');?>" alt="Los Angeles">
 						<div class="carousel-caption">
 							<h3>Title 1</h3>
 							<p>Deskripsi caption 1</p>
 						</div>
 					</div>
 					<div class="item">
-						<img src="<?=base_url('assets/images/home_vw/slide1.jpg');?>" alt="Chicago">
+						<img src="<?=base_url('assets/images/home_vw/slide2.jpg');?>" alt="Chicago">
 						<div class="carousel-caption">
 							<h3>Title 1</h3>
 							<p>Deskripsi caption 1</p>
 						</div>
 					</div>
 					<div class="item">
-						<img src="<?=base_url('assets/images/home_vw/slide1.jpg');?>" alt="New York">
+						<img src="<?=base_url('assets/images/home_vw/slide3.jpg');?>" alt="New York">
 						<div class="carousel-caption">
 							<h3>Title 1</h3>
 							<p>Deskripsi caption 1</p>
