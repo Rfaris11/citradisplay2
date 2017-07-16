@@ -38,14 +38,14 @@
 		  	nav: true,
 		  	responsive:{
 		        0:{
-		            items:1,
+		            items:2,
 		            nav:true
 		        },
-		        600:{
-		            items:3,
+		        768:{
+		            items:4,
 		            nav:false
 		        },
-		        1000:{
+		        942:{
 		            items:8,
 		            nav:true,
 		            loop:false
@@ -58,43 +58,15 @@
 <body>
 
 <div class="mynavbarWrapper">
-	<nav class="navbar">
-	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>                        
-	  </button>
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#"><b>Logo / Nama</b></a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <form class="navbar-form navbar-right">
-	        <div class="input-group">
-	          <input type="text" class="form-control" placeholder="Search">
-	          <div class="input-group-btn">
-	            <button class="btn btn-default" type="submit">
-	              <i class="fa fa-search"></i>
-	            </button>
-	          </div>
-	        </div>
-	      </form>
-	      <ul class="nav navbar-nav">
-	        <li <?php if(strtolower($this->uri->segment(1)) == "home") echo "class='active'" ?>><a href="#"><b>Home</b></a></li>
-	        <li><a href="<?=base_url('produk');?>"><b>Produk</b></a></li>
-	        <li><a href="#"><b>Tentang Kami</b></a></li>
-	      </ul>
-	    </div>
-	  </div>
-	</nav>
+	<?php $this->load->view("komponen/navbar2");?>
 </div>
 
 <!-- START : CAROUSEL -->
-<div class="row" style="padding: 120px 30px 30px 30px; margin: 0;/* min-height:100%; height:100%; overflow: hidden; */ display: flex; align-items: center; position: relative;">
+<div class="row utama" style="/* min-height:100%; height:100%; overflow: hidden; display: flex; align-items: center;*/">
 	<!-- particles.js container -->
 	<div id="particles-js"></div>
 
-	<div class="col-lg-8">
+	<div class="col-xs-12 col-lg-8 margin-bottom-20">
 		<div class="slideUtama">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
@@ -233,6 +205,9 @@
 	</div>
 </div>
 <!-- END : CATEGORY -->
+
+
+<?php $this->load->view("komponen/footer");?>
 
 <script type="text/javascript" src="<?=base_url('assets/particle/particles.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/particle/js/app.js');?>"></script>
