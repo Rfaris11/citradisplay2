@@ -15,7 +15,7 @@ INDEX :
 /* END : PART COMMON */
 
 /* START : PART KATEGORI */
-.myKategori{
+.myKategori, .myFilter{
   background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden; border-color: #999999; padding: 20px;
 }
 .myKategori .list-group{

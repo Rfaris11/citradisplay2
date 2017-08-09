@@ -1,0 +1,16 @@
+/*
+INDEX :
+- PART COMMON
+*/
+
+/* START : PART COMMON */
+.paddingtop-25{
+	padding-top: 25px;
+}
+.paddingbottom-25{
+	padding-bottom: 25px;
+}
+.margin-top-bottom{ /*top logo*/
+	margin-bottom: 20px; margin-top: 20px;
+}
+/* END : PART COMMON */

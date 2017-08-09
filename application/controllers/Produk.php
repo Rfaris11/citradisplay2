@@ -11,12 +11,13 @@ class Produk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->database();
-		$this->load->model("Produk_md");
+		$this->load->model(array("Produk_md","Common_md"));
 	}
 
 	public function index(){
 		$data["kategori"] = $this->Produk_md->getListKategori();
 		$data["kategori_aktif"] = null;
+		$data["latest_product"] = $this->Common_md->latestProduct();
 		if (isset($_GET["user"])) {
 			$data["kategori_aktif"] = $_GET["user"];
 			$data["list_produk"] = $this->Produk_md->getAllProduct(1);
@@ -30,11 +31,33 @@ class Produk extends CI_Controller
 
 	public function getAllProductPerKategori(){
 		$perpage = 20;
-		$param1 = ($this->input->post("idkategori") != "all") ? $this->input->post("idkategori") : null;
+		$param1 = (is_numeric($this->input->post("idkategori"))) ? $this->input->post("idkategori") : "-";
+		$page = ($this->input->post("page") == null) ? 1 : $this->input->post("page");
+		$data = $this->Produk_md->getAllProductPerKategori(($param1 == 0) ? null : $param1, $page, $perpage);
 		echo json_encode(array(
-			"list" => $this->Produk_md->getAllProductPerKategori($param1, $this->input->post("page"), $perpage), 
-			"numpage" => $this->Produk_md->countPage($param1, $perpage)
+			"list" => $data["list"], 
+			"count" => $data["count"],
+			"numpage" => $this->Produk_md->countPage(($param1 == 0) ? null : $param1, $perpage)
 			));
+	}
+
+	public function searchProduct(){
+		// echo $this->input->get("cari", TRUE);
+		// $data = $this->uri->uri_to_assoc();
+		// $code = $data['cari'];
+		// echo $code;
+		$perpage = 20;
+		$page = ($this->input->post("page") == null) ? 1 : $this->input->post("page");
+		$data = $this->Produk_md->searchProduct($this->input->post("keyword"), $page, $perpage);
+		echo json_encode(array("list" => $data["list"],
+			"count" => $data["count"],
+			"numpage" => $this->Produk_md->countPageSearch($this->input->post("keyword"), $perpage)));
+	}
+
+	public function detail($id){
+		$data = $this->Produk_md->getData($id);
+		$data["latest_product"] = $this->Common_md->latestProduct();
+		$this->load->view('detail_produk_vw', $data);
 	}
 }
 ?>

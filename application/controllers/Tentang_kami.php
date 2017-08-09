@@ -10,10 +10,13 @@ class Tentang_kami extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->database();
+		$this->load->model("Common_md");
 	}
 
 	function index(){
-		$this->load->view("Tentang_kami_vw");
+		$data["latest_product"] = $this->Common_md->latestProduct();
+		$this->load->view("Tentang_kami_vw", $data);
 	}
 }
 ?>

@@ -19,7 +19,7 @@ class Home_md extends CI_Model
 
 	function getListTopProduk(){
 		$this->db->limit(8,0);
-		return $this->db->get("MST_PRODUK")->result_array();
+		return $this->db->get("V_DETAIL_PRODUK")->result_array();
 	}
 }
 ?>

@@ -16,6 +16,7 @@
 
 <div class="container-fluid margin-top-bottom">
 	<button type="button" class="btn btn-primary btn-lg">Logo / Nama Perusahaan</button>
+	<!-- <img src="<?=base_url('assets/images/home_vw/logo.jpg');?>"> -->
 	<div class="pull-right">
 		<p><span class="fa fa-phone"></span> Pesan atau hubungi kami di : (+6221) 8778 1122</p>
 	</div>
@@ -32,32 +33,32 @@
 	    <ol class="carousel-indicators">
 	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 	      <li data-target="#myCarousel" data-slide-to="1"></li>
-	      <li data-target="#myCarousel" data-slide-to="2"></li>
+	      <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
 	    </ol>
 
 	    <!-- Wrapper for slides -->
     	<div class="carousel-inner">
 			<div class="item active">
-				<img src="<?=base_url('assets/images/home_vw/slide3.jpg');?>" alt="Los Angeles">
+				<img src="<?=base_url('assets/images/home_vw/slide01.jpg');?>" alt="Los Angeles">
 				<div class="carousel-caption">
 					<h3>Title 1</h3>
 					<p>Deskripsi caption 1</p>
 				</div>
 			</div>
 			<div class="item">
-				<img src="<?=base_url('assets/images/home_vw/slide2.jpg');?>" alt="Chicago">
+				<img src="<?=base_url('assets/images/home_vw/slide02.jpg');?>" alt="Chicago">
 				<div class="carousel-caption">
 					<h3>Title 1</h3>
 					<p>Deskripsi caption 1</p>
 				</div>
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<img src="<?=base_url('assets/images/home_vw/slide3.jpg');?>" alt="New York">
 				<div class="carousel-caption">
 					<h3>Title 1</h3>
 					<p>Deskripsi caption 1</p>
 				</div>
-			</div>
+			</div> -->
     	</div>
 
     	<!-- Left and right controls -->
@@ -164,15 +165,18 @@
 					<!--</div>-->
 				<!--</div>-->
 				<div style="position: relative;">
-					<img src="<?=base_url('assets/images/produk/sample.png');?>">
+					<img src="<?=base_url().$value['VURL'];?>">
 					<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);"><i class="fa fa-eye"></i></button></a>
 				</div>
 				<div class="offer-content">
 					<h4 class="produk-title">
 						<?=$value["VNAMA"]; ?>
 					</h4>
+					<span class='hidden vurl1'><?=$value['VURL'];?></span>
+					<span class='hidden vurl2'><?=$value['VURL2'];?></span>
+					<span class='hidden vurl3'><?=$value['VURL3'];?></span>
 					<span class="hidden produk-kategori">
-						<?=$value["NID_KATEGORI"];?>
+						<?=$value["VNAMA_KTG"];?>
 					</span>
 					<span class="hidden produk-deskripsi">
 						<?=$value["VDESKRIPSI"];?>
@@ -197,13 +201,34 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-lg-4">
-						<img src="<?=base_url('assets/images/produk/sample.png');?>" class="width-100" alt="loading ...">
+						<img src="<?=base_url('assets/images/produk/sample.png');?>" id="my-main-preview" class="width-100" alt="loading ...">
 					</div>
 					<div class="col-lg-8">
-						<label>Deskripsi : </label>
-						<p></p>
-						<br>
-						<label>Kategori : </label><span id="quicklook-kategori"></span>
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#gambar">Gambar</a></li>
+							<li><a data-toggle="tab" href="#uraian">Uraian Produk</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="gambar" class="tab-pane fade in active">
+								<br>
+								<div class="col-lg-4">
+									<a href="javascript:void(0);"><img src="<?=base_url('assets/images/produk/sample.png');?>" class="width-100" alt="loading ..."></a>
+								</div>
+								<div class="col-lg-4">
+									<a href="javascript:void(0);"><img src="<?=base_url('assets/images/produk/sample.png');?>" class="width-100" alt="loading ..."></a>
+								</div>
+								<div class="col-lg-4">
+									<a href="javascript:void(0);"><img src="<?=base_url('assets/images/produk/sample.png');?>" class="width-100" alt="loading ..."></a>
+								</div>
+							</div>
+							<div id="uraian" class="tab-pane fade">
+								<br>
+								<label>Deskripsi : </label>
+								<p></p>
+								<br>
+								<label>Kategori : </label><span id="quicklook-kategori"></span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -224,9 +249,21 @@
 	});
 
 	function setmodal(obj){
-		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html());
-		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html());
+		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html()); //title
+		$("#my-preview-img img").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html()); //gambar utama
+		$("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html()); //thumbnail 1
+		$("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html()); //thumbnail 2
+		$("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html()); //thumbnail 3
+		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html()); //kategori
 	}
+
+	$("#gambar .col-lg-4 a").click(function(e){
+		e.preventDefault();
+		console.log("tes");
+		$("#gambar .col-lg-4 a").removeClass("selected");
+		$(this).addClass("selected");
+		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
+	});
 	
 </script>
 </body>
