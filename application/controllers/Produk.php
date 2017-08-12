@@ -14,7 +14,8 @@ class Produk extends CI_Controller
 		$this->load->model(array("Produk_md","Common_md"));
 	}
 
-	public function index(){
+	public function index($cari = null){
+		$data["cari"] = ($cari != null) ? $cari : null;
 		$data["kategori"] = $this->Produk_md->getListKategori();
 		$data["kategori_aktif"] = null;
 		$data["latest_product"] = $this->Common_md->latestProduct();

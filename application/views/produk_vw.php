@@ -44,13 +44,13 @@
 
 <div class="container-fluid produk">
 	<div class="col-lg-3">
-		<div class="myFilter">
+		<!-- <div class="myFilter">
 			<h3>Filter</h3>
 			<form action="javascript:void(0);" method="POST" id="myFilter">
 				<input type="text" name="search_produk">
 				<button type="submit" name="button_search">Cari</button>
 			</form>
-		</div>
+		</div> -->
 		<div class="myKategori">
 			<h3>Kategori</h3>
 			<div class="list-group">

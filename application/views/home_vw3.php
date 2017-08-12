@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap/bootstrap.css');?>">
 
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/font-awesome-4.3.0/css/font-awesome.min.css');?>">
+	<link href="<?=base_url('assets/aos/aos.css');?>" rel="stylesheet">
 	<!-- <link rel="stylesheet" type="text/css" href="<?=base_url('assets/font/css/montserrat-webfont.min.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/font/less/montserrat-webfont.less');?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/font/scss/montserrat-webfont.scss');?>"> -->
@@ -81,15 +82,15 @@
 		<p>Citra display adalah bla bla bla lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametloremlorem ipsum dolor sit ametlorem ipsum dolor sit ametloremlorem lorem ipsum dolor sit amet</p>
 	</div>
 	<div class="container padding-top-bottom">
-		<div class="col-lg-4">
+		<div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
 			<span class="fa fa-cubes fontsize-50"></span>
 			<p class="margin-top-20">Variasi pilihan lengkap</p>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
 			<span class="fa fa-diamond fontsize-50"></span>
 			<p class="margin-top-20">Produk berkualitas</p>
 		</div>
-		<div class="col-lg-4">
+		<div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
 			<span class="fa fa-money fontsize-50"></span>
 			<p class="margin-top-20">Harga bersaing</p>
 		</div>
@@ -126,7 +127,13 @@
 <div class="container padding-top-20 margin-top-bottom">
 	<?php
 	foreach ($kategori as $item => $value) { ?>
-	<div class="panel panel-default box-shadow">
+	<div class="panel panel-default box-shadow"
+	<?php if ($item%2 == 0) {
+		echo 'data-aos="fade-left"';
+	}
+	else{
+		echo 'data-aos="fade-right"';
+		} ?> data-aos-offset="200">
 		<div class="panel-body">
 		<?php if ($item%2 == 0) { ?>
 			<div class="col-lg-4">
@@ -158,6 +165,7 @@
 	<div class="col-lg-12">
 	<?php foreach ($topproduk as $idx => $value) { ?>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+		<div data-aos="flip-left" data-aos-duration="2000">
 			<div class="offer offer-default">
 				<!--<div class="shape">-->
 					<!--<div class="shape-text">-->
@@ -183,6 +191,7 @@
 					</span>
 				</div>
 			</div>
+		</div>
 		</div>
 	<?php if (intval($idx + 1)%4 == 0) { ?>
 		<div class="clearfix"></div>
@@ -224,7 +233,7 @@
 							<div id="uraian" class="tab-pane fade">
 								<br>
 								<label>Deskripsi : </label>
-								<p></p>
+								<p id="quicklook-deskripsi"></p>
 								<br>
 								<label>Kategori : </label><span id="quicklook-kategori"></span>
 							</div>
@@ -243,18 +252,32 @@
 
 <script type="text/javascript" src="<?=base_url('assets/bootstrap/jQuery-2.1.3.min.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/bootstrap/bootstrap.js');?>"></script>
+<script src="<?=base_url('assets/aos/aos.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		AOS.init({
+				// easing: 'ease-out-back',
+				duration: 1000
+			});
+
 		$('[data-toggle="tooltip"]').tooltip();
+
+		var path = window.location.pathname;
+		var host = window.location.hostname;
+		var base = "<?=base_url('produk');?>";
+		console.log("path : " + path);
+		console.log("host : " + host);
+		console.log("host : " + base);
 	});
 
 	function setmodal(obj){
 		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html()); //title
-		$("#my-preview-img img").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html()); //gambar utama
+		$("#my-main-preview").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html()); //gambar utama
 		$("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html()); //thumbnail 1
 		$("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html()); //thumbnail 2
 		$("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html()); //thumbnail 3
 		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html()); //kategori
+		$("#quicklook-deskripsi").html($(".offer-content .produk-deskripsi", $(obj).closest(".offer")).html()); //kategori
 	}
 
 	$("#gambar .col-lg-4 a").click(function(e){
@@ -263,6 +286,20 @@
 		$("#gambar .col-lg-4 a").removeClass("selected");
 		$(this).addClass("selected");
 		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
+	});
+
+	$("#myFilter").submit(function(){
+		var key = $("input[name='search_produk']").val();
+		if (key != "") {
+			var base = "<?=base_url('produk');?>";
+			window.location.replace(base + "#?cari=" + key + "&hal=1");
+			// location.replace("produk#?cari=" + key + "&hal=1");
+			// searchProduct(key, 1);
+			redirect();
+		}
+		else{
+			alert("keyword pencarian masih kosong");
+		}
 	});
 	
 </script>

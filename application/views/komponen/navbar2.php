@@ -10,9 +10,9 @@
       <a class="navbar-brand" href="<?=base_url();?>"><b>Logo / Nama</b></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <form action="javascript:void(0);" onsubmit="alert('under development'); console.log('under development');" class="navbar-form navbar-right">
+      <form action="javascript:void(0);" class="navbar-form navbar-right" method="POST" id="myFilter">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" name="search_produk" class="form-control" placeholder="Search Produk">
           <div class="input-group-btn">
             <button class="btn btn-default" type="submit">
               <i class="fa fa-search"></i>
