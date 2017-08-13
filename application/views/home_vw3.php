@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/perpage/home/home_vw3.css');?>">
 </head>
 <body style="background-image: url(<?=base_url('assets/images/home_vw/background-pattern.jpg');?>);">
+<script type="text/javascript" src="<?=base_url('assets/bootstrap/jQuery-2.1.3.min.js');?>"></script>
 
 <div class="container-fluid margin-top-bottom">
 	<button type="button" class="btn btn-primary btn-lg">Logo / Nama Perusahaan</button>
@@ -250,7 +251,6 @@
 
 <?php $this->load->view("komponen/footer");?>
 
-<script type="text/javascript" src="<?=base_url('assets/bootstrap/jQuery-2.1.3.min.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/bootstrap/bootstrap.js');?>"></script>
 <script src="<?=base_url('assets/aos/aos.js');?>"></script>
 <script type="text/javascript">
@@ -286,20 +286,6 @@
 		$("#gambar .col-lg-4 a").removeClass("selected");
 		$(this).addClass("selected");
 		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
-	});
-
-	$("#myFilter").submit(function(){
-		var key = $("input[name='search_produk']").val();
-		if (key != "") {
-			var base = "<?=base_url('produk');?>";
-			window.location.replace(base + "#?cari=" + key + "&hal=1");
-			// location.replace("produk#?cari=" + key + "&hal=1");
-			// searchProduct(key, 1);
-			redirect();
-		}
-		else{
-			alert("keyword pencarian masih kosong");
-		}
 	});
 	
 </script>

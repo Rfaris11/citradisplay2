@@ -28,3 +28,18 @@
     </div>
   </div>
 </nav>
+
+<script>
+  $("#myFilter").submit(function(){
+    var key = $("input[name='search_produk']").val();
+    if (key != "") {
+      var base = "<?=base_url('produk');?>";
+      window.location.replace(base + "#?cari=" + key + "&hal=1");
+      // location.replace("produk#?cari=" + key + "&hal=1");
+      // searchProduct(key, 1);
+    }
+    else{
+      alert("keyword pencarian masih kosong");
+    }
+  });
+</script>

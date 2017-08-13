@@ -350,8 +350,10 @@
 
 	$("#myFilter").submit(function(){
 		var key = $("input[name='search_produk']").val();
+		console.log(key);
+		console.log(encodeURI("ban dis"));
 		if (key != "") {
-			location.replace("produk#?cari=" + key + "&hal=1");
+			location.replace("produk#?cari=" + encodeURI(key) + "&hal=1");
 			// searchProduct(key, 1);
 		}
 		else{
