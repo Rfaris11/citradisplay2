@@ -11,7 +11,7 @@
 	<!-- individu page -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/perpage/home_vw.css');?>">
 	<!-- <link rel="stylesheet" type="text/css" href="<?=base_url('assets/perpage/home_vw2.css');?>"> -->
-	<link rel="stylesheet" media="screen" href="<?=base_url('assets/particle/css/style.css');?>">
+	<!-- <link rel="stylesheet" media="screen" href="<?=base_url('assets/particle/css/style.css');?>"> -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/perpage/produk/produk.css');?>">
 	<style type="text/css">
 		#particles-js{
@@ -168,9 +168,9 @@
 
 <?php $this->load->view("komponen/footer");?>
 
-<script type="text/javascript" src="<?=base_url('assets/particle/particles.js');?>"></script>
+<!-- <script type="text/javascript" src="<?=base_url('assets/particle/particles.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/particle/js/app.js');?>"></script>
-<script type="text/javascript" src="<?=base_url('assets/particle/js/lib/stats.js');?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/particle/js/lib/stats.js');?>"></script> -->
 <script type="text/javascript" src="<?=base_url('assets/perpage/home_vw2.js');?>"></script>
 <script type="text/javascript" src="<?=base_url('assets/etc/js/jquery.ba-bbq.min.js');?>"></script>
 <script type="text/javascript">
@@ -221,7 +221,7 @@
 			if (typeof ktg !== "undefined") 
 				getAllProdukperKategori(ktg, hal);
 			else if (typeof cari !== "undefined")
-				searchProduct(cari, hal);
+				searchProduct(encodeURI(cari), hal);
 		});
 	});
 
@@ -284,6 +284,7 @@
 		// console.log(split[0]);
 		// console.log(url.searchParams.get("cari"));
 
+		key = key.split('+').join(' ');
 		var page = getUrlVars()["hal"];
 		// console.log(page);
 
@@ -350,10 +351,10 @@
 
 	$("#myFilter").submit(function(){
 		var key = $("input[name='search_produk']").val();
-		console.log(key);
-		console.log(encodeURI("ban dis"));
+		// console.log(encodeURIComponent("ban dis"));
 		if (key != "") {
-			location.replace("produk#?cari=" + encodeURI(key) + "&hal=1");
+			location.replace("produk#?cari=" + key.split(' ').join('+') + "&hal=1");
+			// window.location ="produk#?cari=" + (encodeURIComponent(key.trim()) + "&hal=1";
 			// searchProduct(key, 1);
 		}
 		else{
