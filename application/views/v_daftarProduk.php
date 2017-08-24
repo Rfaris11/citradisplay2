@@ -135,12 +135,49 @@
             </div>
             <!-- /.col -->
           </div>
-          <div id="myResultMasterProduct">
-          abc
 
-          </div>
           <!-- /.row -->
         </div>
+
+        <!-- data table master produk -->
+
+        <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Daftar Produk</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-9">
+                  <table class="table table-bordered">
+                <tr>
+                  <!-- <th style="width: 10px">#</th> -->
+                  <th>Task</th>
+                  <th>Progress</th>
+                </tr>
+                <div id="myResultMasterProduct">
+                <?php foreach ($data as $res) { ?>
+                <tr>
+                  <!-- <td><?= $i; ?></td> -->
+                  <td><?= $res['VNAMA']; ?></td>
+                  <td><?= $res['VDESKRIPSI']; ?></td>
+                </tr>
+                <?php } ?>
+                </div>
+                </table>
+            </div>
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <!-- /.row -->
+        </div>
+        
 
     </section>
     <!-- /.content -->

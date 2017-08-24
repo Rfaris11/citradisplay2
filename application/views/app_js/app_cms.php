@@ -15,12 +15,16 @@ function getList(param){
     data : {id : param},
     success : function(a){
       console.log(a.list);
-      var html = "<b>";
+      var html = "<tr>";
+
+      html += "<td>" + a.list[0].VNAMA + "</td>";
+      html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
       // html += "namaProduk : " + a.list[0].VNAMA+"<br>";
       // html += "deskripsi : " + a.list[0].VDESKRIPSI+"<br>";
-      html += a.list[0].VNAMA;
-      html +=  a.list[0].VDESKRIPSI;
-      html += "</b>";
+      /*html += a.list[0].VNAMA+"&nbsp";
+      html +=  a.list[0].VDESKRIPSI;*/
+      html += "<tr>";
+      $("#myResultMasterProduct").empty();
       $(html).appendTo("#myResultMasterProduct");
     }
   });
