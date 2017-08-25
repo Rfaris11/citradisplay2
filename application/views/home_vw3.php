@@ -265,9 +265,9 @@
 		var path = window.location.pathname;
 		var host = window.location.hostname;
 		var base = "<?=base_url('produk');?>";
-		console.log("path : " + path);
-		console.log("host : " + host);
-		console.log("host : " + base);
+		// console.log("path : " + path);
+		// console.log("host : " + host);
+		// console.log("host : " + base);
 	});
 
 	function setmodal(obj){
@@ -282,7 +282,7 @@
 
 	$("#gambar .col-lg-4 a").click(function(e){
 		e.preventDefault();
-		console.log("tes");
+		// console.log("tes");
 		$("#gambar .col-lg-4 a").removeClass("selected");
 		$(this).addClass("selected");
 		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));

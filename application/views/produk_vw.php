@@ -292,7 +292,7 @@
 		$(".my-alertonoff").removeClass("hidden");
 		$.ajax({
 			url: "<?=base_url('produk/searchProduct');?>",
-			data: {keyword: key, page: page2},
+			data: {keyword: key.split("+").join(" "), page: page2},
 			success: function(a){
 				var html = "";
 				$.each(a.list, function(index, array){
@@ -332,7 +332,7 @@
 
 				$(".my-alertonoff").addClass("hidden");
 
-				$("#notif-keyword").text("Pencarian : " + key);
+				$("#notif-keyword").text("Pencarian : " + key.split("+").join(" "));
 				$("#notif-item").text(a.count);
 			}
 		});
@@ -341,19 +341,20 @@
 	function setmodal(obj){
 		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html());
 		$("#my-preview-img img").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html());
-		$("#my-preview-img div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html());
-		$("#my-preview-img div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html());
-		$("#my-preview-img div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html());
+		$("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html());
+		$("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html());
+		$("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html());
 		$("#quicklook-deskripsi").html($(".offer-content .produk-deskripsi", $(obj).closest(".offer")).html());
 		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html());
 	}
 
 	$("#myFilter").submit(function(){
 		var key = $("input[name='search_produk']").val();
-		console.log(key);
-		console.log(encodeURI("ban dis"));
+		// console.log(key);
+		// console.log(encodeURI("ban dis"));
+		var encodeKey = key.split(" ").join("+");
 		if (key != "") {
-			location.replace("produk#?cari=" + encodeURI(key) + "&hal=1");
+			location.replace("produk#?cari=" + encodeKey + "&hal=1");
 			// searchProduct(key, 1);
 		}
 		else{
@@ -388,6 +389,14 @@
 	function resetsearch(){
 		$("input[name='search_produk']").val("");
 	}
+
+	$("#gambar .col-lg-4 a").click(function(e){
+		e.preventDefault();
+		// console.log("tes");
+		$("#gambar .col-lg-4 a").removeClass("selected");
+		$(this).addClass("selected");
+		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
+	});
 </script>
 </body>
 </html>
