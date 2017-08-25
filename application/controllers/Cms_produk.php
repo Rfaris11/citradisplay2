@@ -17,6 +17,10 @@ class Cms_produk extends CI_Controller
 	}
 
 	public function showListProduct(){
+		if($this->session->userdata('status')!= "isLogin"){
+			redirect('login');
+		}
+		
 		$param = $this->input->post("id");
 		$where = array(
 			'NID' => $param
@@ -25,5 +29,6 @@ class Cms_produk extends CI_Controller
 		echo json_encode(array("list" => $res));
 
 	}
+
 }
 ?>
