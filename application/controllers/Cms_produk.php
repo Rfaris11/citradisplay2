@@ -78,7 +78,8 @@ class Cms_produk extends CI_Controller
 
         	$res = $this->M_managementProduct->	insertMaster('dtl_mst_produk',$dataDetail);
         	if($res>0){
-        		echo "berhasil";
+        		$this->session->set_flashdata('msgAction','Data berhasil ditambah');
+        		redirect('admin/daftarProduk');
         	}
         }
 	}
