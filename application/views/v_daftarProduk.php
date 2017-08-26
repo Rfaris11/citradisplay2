@@ -160,7 +160,7 @@
                   <th>Task</th>
                   <th>Progress</th>
                 </tr>
-                <div id="myResultMasterProduct">
+                <tbody id="myResultMasterProduct">
                 <?php foreach ($data as $res) { ?>
                 <tr>
                   <!-- <td><?= $i; ?></td> -->
@@ -168,7 +168,7 @@
                   <td><?= $res['VDESKRIPSI']; ?></td>
                 </tr>
                 <?php } ?>
-                </div>
+                </tbody>
                 </table>
             </div>
             </div>
