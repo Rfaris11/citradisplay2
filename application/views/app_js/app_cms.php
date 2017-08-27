@@ -30,4 +30,20 @@ function getList(param){
   });
 
 }
+
+$('#mstProdukEdit').on('click', function(e){
+  e.preventDefault();
+  var selectedNid = this.value;
+  getSelectedKategori(selectedNid);
+});
+
+function getSelectedKategori(param){
+  $.ajax({
+    url:"<?= base_url('Cms_produk/showSelectedKategori');?>",
+    data : {id : param},
+    success : function(a){
+      console.log(a.list);
+    }
+  })
+}
 </script>
