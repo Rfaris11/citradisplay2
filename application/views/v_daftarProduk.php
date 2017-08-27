@@ -176,7 +176,7 @@
                   <!-- <td><?= $i; ?></td> -->
                   <td><?= $res['VNAMA']; ?></td>
                   <td><?= $res['VDESKRIPSI']; ?></td>
-                  <td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditProduk">Edit</button>&nbsp;
+                  <td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditProduk" onclick="getSelectedKategori(this);" nid='<?=$res["NID"];?>'>Edit</button>&nbsp;
                   <a href="<?= base_url('Cms_produk/doDeleteMasterProduct/').$res['NID']; ?>"><button type="button" class="btn btn-danger" name="btnDelete">Delete</button></a></td>
                 </tr>
                 <?php } ?>
@@ -275,6 +275,9 @@
                             </tbody>
                             </form>
                         </table>
+                        <div id="editGambar">
+                          
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer clearfix">

@@ -31,18 +31,33 @@ function getList(param){
 
 }
 
-$('#mstProdukEdit').on('click', function(e){
-  e.preventDefault();
-  var selectedNid = this.value;
-  getSelectedKategori(selectedNid);
-});
+// $('#mstProdukEdit').on('click', function(e){
+//   e.preventDefault();
+//   var selectedNid = this.value;
+//   getSelectedKategori(selectedNid);
+// });
 
 function getSelectedKategori(param){
+  /* clear value data sebelumnya */
+  $("input, textarea", "#modalEditProduk").val(""); // set each input(texbox), textarea be empty
+  $("#editGambar").empty(); // netralisir bagian gambar
   $.ajax({
     url:"<?= base_url('Cms_produk/showSelectedKategori');?>",
-    data : {id : param},
+    data : {id : $(param).attr("nid")},
     success : function(a){
-      console.log(a.list);
+      $("input[name='editNama']").val(a.res[0].NAMA_PRODUK);
+      $("textarea[name='editDeskripsi']").val(a.res[0].VDESKRIPSI);
+      $("textarea[name='editSpesifikasi']").val(a.res[0].VSPESIFIKASI);
+
+      /* start : set bagian gambar */
+      var html = "";
+      $.each(a.res, function(index,array){
+        html += "<div class='col-xs-4 col-md-4 col-lg-4'>"
+        html += "<a href='#'><img src='<?=base_url();?>" + array.VURL + "' style='width:100%;' alt='Loading . . .'></a>";
+        html += "</div>";
+      });
+      $(html).appendTo("#editGambar");
+      /* end : set bagian gambar */
     }
   })
 }
