@@ -31,6 +31,19 @@ class Cms_produk extends CI_Controller
 
 	}
 
+	public function showSelectedKategori(){
+		if($this->session->userdata('status')!= "isLogin"){
+			redirect('login');
+		}
+
+		$param = $this->input->post("id");
+		$where = array(
+			'ID' => $param
+			);
+		$res = $this->M_managementProduct->getSelectedMasterProduct('v_get_selected_master_prod',$where);
+		echo json_encode(array("res" => $res));
+	}
+
 	public function doDeleteMasterProduct($nid){
 		$where = array('NID' => $nid);
 		$res = $this->M_managementProduct->deleteSelectedMasterProduk('mst_produk',$where);
