@@ -45,11 +45,9 @@ class Cms_produk extends CI_Controller
 	}
 
 	public function doDeleteMasterProduct($nid){
-		$where = array('NID' => $nid);
-		$res = $this->M_managementProduct->deleteSelectedMasterProduk('mst_produk',$where);
+		$res = $this->M_managementProduct->deleteMstAndDtl($nid);
 		$this->session->set_flashdata('msgAction','Data berhasil dihapus');
 		redirect('admin/daftarProduk');
-
 	}
 
 	public function doUploadFile(){

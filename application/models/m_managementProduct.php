@@ -13,7 +13,7 @@ class M_managementProduct extends CI_Model {
 		return $res->result_array();
 	}
 
-	public function deleteSelectedMasterProduk($tableName,$where){
+	public function deleteData($tableName,$where){
 		$res = $this->db->delete($tableName,$where);
 		return $res;
 	}
@@ -31,5 +31,10 @@ class M_managementProduct extends CI_Model {
 	public function getSequence($where,$tableName){
 		$res = $this->db->select_max($where)->get($tableName);
 		return $res->result_array();
-	}	
+	}
+
+	public function deleteMstAndDtl($where){
+		$res = $this->db->query('delete a.*,b.* from mst_produk a inner join dtl_mst_produk b on a.NID=b.NID_PRODUK where a.NID = '.$where);
+		return $res;
+	}
 }
