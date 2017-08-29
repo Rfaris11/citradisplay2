@@ -173,17 +173,17 @@
 					<!--	top								-->
 					<!--</div>-->
 				<!--</div>-->
-				<div style="position: relative;">
+				<div style="position: relative;" id="myImgProd">
 					<img src="<?=base_url().$value['VURL'];?>">
-					<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);"><i class="fa fa-eye"></i></button></a>
+					<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);" nid="<?=$value['NID'];?>"><i class="fa fa-eye"></i></button></a>
 				</div>
 				<div class="offer-content">
 					<h4 class="produk-title">
 						<?=$value["VNAMA"]; ?>
 					</h4>
-					<span class='hidden vurl1'><?=$value['VURL'];?></span>
+					<!-- <span class='hidden vurl1'><?=$value['VURL'];?></span>
 					<span class='hidden vurl2'><?=$value['VURL2'];?></span>
-					<span class='hidden vurl3'><?=$value['VURL3'];?></span>
+					<span class='hidden vurl3'><?=$value['VURL3'];?></span> -->
 					<span class="hidden produk-kategori">
 						<?=$value["VNAMA_KTG"];?>
 					</span>
@@ -197,6 +197,11 @@
 	<?php if (intval($idx + 1)%4 == 0) { ?>
 		<div class="clearfix"></div>
 	<?php } } ?>
+	</div>
+	<div id="my-detailImg">
+	<?php foreach ($img as $idx) { ?>
+		<div nid="<?=$idx['NID_PRODUK'];?>" vurl="<?=base_url().$idx['VURL'];?>"></div>
+	<?php } ?>
 	</div>
 </div>
 
@@ -272,21 +277,44 @@
 
 	function setmodal(obj){
 		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html()); //title
-		$("#my-main-preview").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html()); //gambar utama
-		$("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html()); //thumbnail 1
-		$("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html()); //thumbnail 2
-		$("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html()); //thumbnail 3
+		$("#my-main-preview").attr("src", $("img", $(obj).closest("#myImgProd")).attr("src")); //gambar utama
+		// $("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html()); //thumbnail 1
+		// $("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html()); //thumbnail 2
+		// $("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html()); //thumbnail 3
+		// alert($("#my-detailImg div[nid='" + $(obj).attr("nid") + "']").length);
+
+		$("#gambar").empty();// clearance thumbnail
+		
+		/* start : set thumbnail */
+		var html = "<br>";
+		$("#my-detailImg div[nid='" + $(obj).attr("nid") + "']").each(function(){
+			// $(this).attr("src");
+			html += '<div class="col-lg-4">'
+			+ '<a href="javascript:void(0);" onclick="clickImg(this)"><img src="' + $(this).attr("vurl") + '" class="width-100" alt="loading ..."></a>'
+			+ '</div>';
+			// alert($(this).attr("vurl"));
+		});
+		$(html).appendTo("#gambar");
+		/* end : set thumbnail */
+
 		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html()); //kategori
 		$("#quicklook-deskripsi").html($(".offer-content .produk-deskripsi", $(obj).closest(".offer")).html()); //kategori
 	}
 
-	$("#gambar .col-lg-4 a").click(function(e){
-		e.preventDefault();
-		// console.log("tes");
-		$("#gambar .col-lg-4 a").removeClass("selected");
-		$(this).addClass("selected");
-		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
-	});
+	function clickImg(obj){
+		$("#gambar a").removeClass("selected");
+		$(obj).addClass("selected");
+		$("#my-main-preview").attr("src", $("img", $(obj)).attr("src"));
+	}
+
+
+	// $("#gambar .col-lg-4 a").click(function(e){
+	// 	e.preventDefault();
+	// 	// console.log("tes");
+	// 	$("#gambar .col-lg-4 a").removeClass("selected");
+	// 	$(this).addClass("selected");
+	// 	$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
+	// });
 	
 </script>
 </body>

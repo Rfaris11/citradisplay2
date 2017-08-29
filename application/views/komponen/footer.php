@@ -5,7 +5,7 @@
     <div class="col-md-4 col-sm-6 footerleft ">
       <div class="logofooter"> Logo / Nama PT</div>
       <p>Desripsi singkat Perusahaan / Visi misi Perusahaan. Desripsi singkat Perusahaan / Visi misi Perusahaan. Desripsi singkat Perusahaan / Visi misi Perusahaan.</p>
-      <p><i class="fa fa-map-marker"></i> Jl. Lorem Ipsum No. XX, Jakarta-Barat 114400, DKI Jakarta, INDONESIA</p>
+      <p><i class="fa fa-map-marker"></i><span> Jl. Lorem Ipsum No. XX, Jakarta-Barat 114400, DKI Jakarta, INDONESIA</span></p>
       <p><i class="fa fa-phone"></i> Phone (Indonesia) : +6221 9999 878</p>
       <p><i class="fa fa-envelope"></i> E-mail : info@citradisplay.com</p>
       

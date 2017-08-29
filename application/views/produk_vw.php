@@ -77,6 +77,7 @@
 		</div>
 		<div class="col-xs-12">
 			<span id="listContent"></span>
+			<div id="my-detailImg"></div>
 		</div>
 	<!--?php for ($i=0; $i < 20; $i++) { ?>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -238,9 +239,9 @@
 					// html += "<div>" + array.VNAMA + "</div>";
 					html += "<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3'>"
 					+ "<div class='offer offer-default'>"
-					+ "<div class='posRelative'>"
+					+ "<div class='posRelative' id='myImgProd'>"
 					+ "<img src='<?=base_url();?>" + array.VURL + "'>"
-					+ '<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);"><i class="fa fa-eye"></i></button></a>'
+					+ '<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);" nid="' + array.NID + '""><i class="fa fa-eye"></i></button></a>'
 					+ '<a href="<?=base_url('produk/detail/');?>' + array.NID + '" ><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 50px;"><i class="fa fa-link"></i></button></a></div>'
 					+ '<div class="offer-content">'
 					+ '<h5 class="produk-title">'
@@ -257,6 +258,15 @@
 					}
 				});
 				$(html).appendTo("#listContent");
+
+				$("#my-detailImg").empty() // clearance box list detail img
+				/* start : init list direktori img detail */
+				var detailImg = "";
+				$.each(a.img, function(index, array){
+					detailImg += '<div nid="' + array.NID_PRODUK + '" vurl="' + array.VURL + '"></div>';
+				});
+				$(detailImg).appendTo("#my-detailImg");
+				/* end : init list direktori img detail */
 
 				var hmtlpage = '<ul class="pagination">';
 				var pageAktif = "";
@@ -300,9 +310,9 @@
 					// html += "<div>" + array.VNAMA + "</div>";
 					html += "<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3'>"
 					+ "<div class='offer offer-default'>"
-					+ "<div class='posRelative'>"
+					+ "<div class='posRelative' id='myImgProd'>"
 					+ "<img src='<?=base_url();?>" + array.VURL + "'>"
-					+ '<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);"><i class="fa fa-eye"></i></button></a>'
+					+ '<a href="javascript:void(0);" data-toggle="modal tooltip" title="Lihat cepat"><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 10px;" data-toggle="modal" data-target="#modal-quicklook" onclick="setmodal(this);" nid="' + array.NID + '"><i class="fa fa-eye"></i></button></a>'
 					+ '<a href="<?=base_url('produk/detail/');?>' + array.NID + '" ><button type="button" class="btn btn-default btn-circle btn-sm" style="position: absolute; bottom: -15px; right: 50px;"><i class="fa fa-link"></i></button></a></div>'
 					+ '<div class="offer-content">'
 					+ '<h5 class="produk-title">'
@@ -319,6 +329,15 @@
 					}
 				});
 				$(html).appendTo("#listContent");
+
+				$("#my-detailImg").empty() // clearance box list detail img
+				/* start : init list direktori img detail */
+				var detailImg = "";
+				$.each(a.img, function(index, array){
+					detailImg += '<div nid="' + array.NID_PRODUK + '" vurl="' + array.VURL + '"></div>';
+				});
+				$(detailImg).appendTo("#my-detailImg");
+				/* end : init list direktori img detail */
 
 				var hmtlpage = '<ul class="pagination">';
 				var pageAktif = "";
@@ -340,10 +359,25 @@
 
 	function setmodal(obj){
 		$(".quicklook-title").html($(".offer-content .produk-title",(obj).closest(".offer")).html());
-		$("#my-preview-img img").attr("src", $(".offer-content .vurl1", $(obj).closest(".offer")).html());
-		$("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html());
-		$("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html());
-		$("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html());
+		$("#my-preview-img img").attr("src", $("img", $(obj).closest("#myImgProd")).attr("src"));
+		// $("#gambar div img:eq(0)").attr("src",$(".offer-content .vurl1", $(obj).closest(".offer")).html());
+		// $("#gambar div img:eq(1)").attr("src",$(".offer-content .vurl2", $(obj).closest(".offer")).html());
+		// $("#gambar div img:eq(2)").attr("src",$(".offer-content .vurl3", $(obj).closest(".offer")).html());
+
+		$("#gambar").empty();// clearance thumbnail
+		
+		/* start : set thumbnail */
+		var html = "<br>";
+		$("#my-detailImg div[nid='" + $(obj).attr("nid") + "']").each(function(){
+			// $(this).attr("src");
+			html += '<div class="col-lg-4">'
+			+ '<a href="javascript:void(0);" onclick="clickImg(this)"><img src="' + $(this).attr("vurl") + '" class="width-100" alt="loading ..."></a>'
+			+ '</div>';
+			// alert($(this).attr("vurl"));
+		});
+		$(html).appendTo("#gambar");
+		/* end : set thumbnail */
+
 		$("#quicklook-deskripsi").html($(".offer-content .produk-deskripsi", $(obj).closest(".offer")).html());
 		$("#quicklook-kategori").html($(".offer-content .produk-kategori", $(obj).closest(".offer")).html());
 	}
@@ -390,13 +424,19 @@
 		$("input[name='search_produk']").val("");
 	}
 
-	$("#gambar .col-lg-4 a").click(function(e){
-		e.preventDefault();
-		// console.log("tes");
-		$("#gambar .col-lg-4 a").removeClass("selected");
-		$(this).addClass("selected");
-		$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
-	});
+	function clickImg(obj){
+		$("#gambar a").removeClass("selected");
+		$(obj).addClass("selected");
+		$("#my-main-preview").attr("src", $("img", $(obj)).attr("src"));
+	}
+
+	// $("#gambar .col-lg-4 a").click(function(e){
+	// 	e.preventDefault();
+	// 	// console.log("tes");
+	// 	$("#gambar .col-lg-4 a").removeClass("selected");
+	// 	$(this).addClass("selected");
+	// 	$("#my-main-preview").attr("src", $("img", $(this)).attr("src"));
+	// });
 </script>
 </body>
 </html>

@@ -21,5 +21,10 @@ class Home_md extends CI_Model
 		$this->db->limit(8,0);
 		return $this->db->get("V_DETAIL_PRODUK")->result_array();
 	}
+
+	function getDetailImgProduk($param){
+		$this->db->where_in("NID_PRODUK", $param);
+		return $this->db->get("dtl_mst_produk")->result_array();
+	}
 }
 ?>
