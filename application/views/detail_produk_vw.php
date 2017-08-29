@@ -23,21 +23,17 @@
 </div>
 
 <div class="container paddingbottom-25">
-	<h1><?=$VNAMA; ?></h1>
+	<h1><?=$header['VNAMA']; ?></h1>
 	<div class="col-lg-4">
-		<img id="my-main-preview" src="<?=base_url('').$VURL;?>" width="100%">
+		<img id="my-main-preview" src="<?=base_url('').$header['VURL'];?>" width="100%">
 	</div>
 	<div class="col-lg-8">
 		<div class="col-lg-12" id="my-preview-img">
+		<?php foreach ($img as $key) { ?>
 			<div class="col-lg-4">
-				<a href="javascript:void(0);"><img src="<?=base_url().$VURL;?>" width="100%"></a>
+				<a href="javascript:void(0);"><img src="<?=base_url().$key['VURL'];?>" width="100%"></a>
 			</div>
-			<div class="col-lg-4">
-				<a href="javascript:void(0);"><img src="<?=base_url().$VURL2;?>" width="100%"></a>
-			</div>
-			<div class="col-lg-4">
-				<a href="javascript:void(0);"><img src="<?=base_url().$VURL3;?>" width="100%"></a>
-			</div>
+		<?php }?>
 		</div>
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#uraian">Uraian Produk</a></li>
@@ -45,18 +41,18 @@
 		</ul>
 		<div class="tab-content">
 			<div id="uraian" class="tab-pane fade in active">
-				<h3><?=$VNAMA; ?></h3>
+				<h3><?=$header['VNAMA']; ?></h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
 			<div id="spek" class="tab-pane fade">
 				<h4>Deskripsi</h4>
-				<p><?php echo ($VDESKRIPSI != "") ? $VDESKRIPSI : "-"; ?></p>
+				<p><?php echo ($header['VDESKRIPSI'] != "") ? $header['VDESKRIPSI'] : "-"; ?></p>
 				<h4>Spesifikasi</h4>
-				<p><?php echo ($VSPESIFIKASI != "") ? $VSPESIFIKASI : "-"; ?></p>
+				<p><?php echo ($header['VSPESIFIKASI'] != "") ? $header['VSPESIFIKASI'] : "-"; ?></p>
 				<h4>Kategori</h4>
-				<p><?php echo ($VNAMA_KTG != "") ? $VNAMA_KTG : "-"; ?></p>
+				<p><?php echo ($header['VNAMA_KTG'] != "") ? $header['VNAMA_KTG'] : "-"; ?></p>
 			</div>
 		</div>
 	</div>
