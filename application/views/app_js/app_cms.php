@@ -9,6 +9,33 @@ $('#myDropdown1').on('change', function(e) {
   
 });
 
+$('#myDropdownSearchKategori').on('change', function(e) {
+  //alert(this.value);
+  e.preventDefault();
+  var idMasterKategori = this.value;
+  $("#myResultMasterKategori").empty();
+  getListKategori(idMasterKategori);
+  
+});
+
+function getListKategori(param){
+  $.ajax({
+    url:"<?=base_url('Cms_produk/showListKategori');?>" ,
+    data : {id : param},
+    success : function(a){
+      console.log(a.list);
+      var html = "<tr>";
+
+      html += "<td>" + a.list[0].VNAMA + "</td>";
+      html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
+      html += "</tr>";
+      $("#myResultMasterKategori").empty();
+      $(html).appendTo("#myResultMasterKategori");
+
+    }
+  });
+}
+
 function getList(param){
   $.ajax({
     url:"<?=base_url('Cms_produk/showListProduct');?>" ,

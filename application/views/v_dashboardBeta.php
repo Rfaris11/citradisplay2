@@ -100,6 +100,13 @@
             </span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="<?= base_url('admin/daftarKategori'); ?>">
+            <i class="fa fa-cube"></i> <span>Daftar Kategori</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

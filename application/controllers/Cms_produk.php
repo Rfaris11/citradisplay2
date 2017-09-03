@@ -26,9 +26,18 @@ class Cms_produk extends CI_Controller
 		$where = array(
 			'NID' => $param
 			);
-		$res = $this->M_managementProduct->getSelectedMasterProduct('mst_produk',$where);
+		$res = $this->M_managementProduct->getSelectedMaster('mst_produk',$where);
 		echo json_encode(array("list" => $res));
 
+	}
+
+	public function showListKategori(){
+		$param = $this->input->post("id");
+		$where = array(
+			'NID' => $param
+			);
+		$res = $this->M_managementProduct->getSelectedMaster('mst_kategori',$where);
+		echo json_encode(array("list" => $res));
 	}
 
 	public function showSelectedKategori(){
@@ -45,7 +54,7 @@ class Cms_produk extends CI_Controller
 	}
 
 	public function doDeleteMasterProduct($nid){
-		$res = $this->M_managementProduct->deleteMstAndDtl($nid);
+		$res = $this->M_managementProduct->deleteMstAndDtl('mst_produk','dtl_mst_produk','NID','NID_PRODUK',$nid);
 		$this->session->set_flashdata('msgAction','Data berhasil dihapus');
 		redirect('admin/daftarProduk');
 	}
@@ -87,12 +96,32 @@ class Cms_produk extends CI_Controller
         		'VURL' => $fileProduk
         		);
 
-        	$res = $this->M_managementProduct->	insertMaster('dtl_mst_produk',$dataDetail);
+        	$res = $this->M_managementProduct->insertMaster('dtl_mst_produk',$dataDetail);
         	if($res>0){
         		$this->session->set_flashdata('msgAction','Data berhasil ditambah');
         		redirect('admin/daftarProduk');
         	}
         }
+	}
+
+	public function doInsertMstKategori(){
+		$addNama = $this->input->post('addNama');
+		$addDeskripsi = $this->input->post('addDeskripsi');
+		$data = array(
+			'VNAMA' => $addNama,
+			'VDESKRIPSI' => $addDeskripsi
+			);
+		$res = $this->M_managementProduct->insertMaster('mst_kategori',$data);
+		if($res>0){
+			$this->session->set_flashdata('msgAction','Data berhasil ditambah');
+			redirect('admin/daftarKategori');
+		}
+	}
+
+	public function doDeleteMstKategori($nid){
+		$res = $this->M_managementProduct->deleteMstKategoriAndDtl($nid);
+		$this->session->set_flashdata('msgAction','Data berhasil dihapus');
+		redirect('admin/daftarKategori');
 	}
 
 }
