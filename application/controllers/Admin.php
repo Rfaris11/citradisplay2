@@ -26,11 +26,16 @@ class Admin extends CI_Controller
 	}
 
 	public function daftarProduk(){
-		$data = $this->M_managementProduct->getMasterProduct('mst_produk');
-		$dataKategori = $this->M_managementProduct->getAllMasterKategori('mst_kategori');
+		$data = $this->M_managementProduct->getAllMaster('mst_produk');
+		$dataKategori = $this->M_managementProduct->getAllMaster('mst_kategori');
 		$this->load->view('v_daftarProduk',array('data' => $data,
 			'dataKategori' => $dataKategori
 			));
+	}
+
+	public function daftarKategori(){
+		$data = $this->M_managementProduct->getAllMaster('mst_kategori');
+		$this->load->view('v_daftarKategori',array('dataKategori' => $data));
 	}
 }
 ?>

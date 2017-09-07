@@ -81,14 +81,14 @@
             </span>
           </a>
         </li>
-        <li class="treeview active">
+        <li class="treeview">
           <a href="<?= base_url('admin/daftarProduk'); ?>">
             <i class="fa fa-cube"></i> <span>Daftar Produk</span>
             <span class="pull-right-container">
             </span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview active">
           <a href="<?= base_url('admin/daftarKategori'); ?>">
             <i class="fa fa-cube"></i> <span>Daftar Kategori</span>
             <span class="pull-right-container">
@@ -105,10 +105,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Produk
+        Daftar Kategori
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-cube"></i> Daftar Produk</a></li>
+        <li><a href="#"><i class="fa fa-cube"></i> Daftar Kategori</a></li>
       </ol>
     </section>
 
@@ -118,7 +118,7 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Pencarian Produk</h3>
+          <h3 class="box-title">Pencarian Kategori</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -130,9 +130,9 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Nama Produk</label>
-                <select name="listMstProduk" id="myDropdown1" class="form-control select2" style="width: 100%;">
-                <?php foreach ($data as $r) {
+                <label>Nama Kategori</label>
+                <select name="listMstProduk" id="myDropdownSearchKategori" class="form-control select2" style="width: 100%;">
+                <?php foreach ($dataKategori as $r) {
                 ?>
                   <option value="<?= $r['NID']; ?>"><?= $r['VNAMA']; ?></option>
                 <?php } ?>
@@ -148,7 +148,7 @@
         <!-- end box -->
         <div class="row list" style="margin-bottom: 10px;">
           <span class="col-md-12" style="text-align:right;">
-            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalAddProduk"><i class="fa fa-plus"></i>&nbsp;Tambah Baru</button>
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalAddKategori"><i class="fa fa-plus"></i>&nbsp;Tambah Baru</button>
           </span>
         </div>
 
@@ -156,7 +156,7 @@
 
         <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Daftar Produk</h3>
+          <h3 class="box-title">Daftar Kategori</h3>
           <?php if($this->session->flashdata('msgAction')){
             echo "<br/><br/><h4 class='box-title' style='color: red'>".$this->session->flashdata('msgAction')."</h4>";
             } ?>
@@ -173,18 +173,18 @@
                   <table class="table table-bordered">
                 <tr>
                   <!-- <th style="width: 10px">#</th> -->
-                  <th>Nama Produk</th>
+                  <th>Nama Kategori</th>
                   <th>Deskripsi</th>
-                  <th>Action</th>
+                  <th style="width: 20%">Action</th>
                 </tr>
-                <tbody id="myResultMasterProduct">
-                <?php foreach ($data as $res) { ?>
+                <tbody id="myResultMasterKategori">
+                <?php foreach ($dataKategori as $res) { ?>
                 <tr>
                   <!-- <td><?= $i; ?></td> -->
                   <td><?= $res['VNAMA']; ?></td>
                   <td><?= $res['VDESKRIPSI']; ?></td>
-                  <td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditProduk" onclick="getSelectedKategori(this);" nid='<?=$res["NID"];?>'>Edit</button>&nbsp;
-                  <a href="<?= base_url('Cms_produk/doDeleteMasterProduct/').$res['NID']; ?>"><button type="button" class="btn btn-danger" name="btnDelete">Delete</button></a></td>
+                  <td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditKategori" onclick="getSelectedSearchData(this);" nid='<?=$res["NID"];?>'>Edit</button>&nbsp;
+                  <a href="<?= base_url('Cms_produk/doDeleteMstKategori/').$res['NID']; ?>"><button type="button" class="btn btn-danger" name="btnDelete">Delete</button></a></td>
                 </tr>
                 <?php } ?>
                 </tbody>
@@ -245,13 +245,13 @@
   });
 </script>
 
-<!-- modal edit mstproduk -->
-<div class="modal fade" id="modalEditProduk" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- modal edit mstKategori -->
+<div class="modal fade" id="modalEditKategori" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Produk</h4>
+                    <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Kategori</h4>
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
@@ -259,32 +259,16 @@
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
-                                    <td class="col-sm-3">Kategori Produk : </td>
-                                    <td><select class="form-control select2" name="editkategori" style="width: 100%">
-                                    <?php foreach ($dataKategori as $result) { ?>
-                                    <option value="<?= $result['NID']; ?>"><?= $result['VNAMA']; ?></option>
-                                    <?php } ?>
-                                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-3">Nama Barang :</td>
+                                    <td class="col-sm-3">Nama Kategori :</td>
                                     <td><input class="form-control" type="text" name="editNama"></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Deskripsi :</td>
                                     <td><textarea class="form-control" name="editDeskripsi"></textarea></td>
                                 </tr>
-                                <tr>
-                                    <td class="col-sm-3">Spesifikasi :</td>
-                                    <td><textarea class="form-control" name="editSpesifikasi"></textarea></td>
-                                </tr>
                             </tbody>
                             </form>
                         </table>
-                        <div id="editGambar">
-                          
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
@@ -293,45 +277,28 @@
             </div>
         </div>
     </div>
-<!-- end modal edit mstproduk -->
+<!-- end modal edit mstkategori -->
 
-<!-- modal add mstproduk -->
-<div class="modal fade" id="modalAddProduk" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- modal add Kategori -->
+<div class="modal fade" id="modalAddKategori" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus-square-o"></i>&nbsp;Tambah Produk</h4>
+                    <h4 class="modal-title"><i class="fa fa-plus-square-o"></i>&nbsp;Tambah Kategori</h4>
                 </div>
                 <div class="modal-body">
                     <div class="table-responsive">
-                      <form method="post" action="<?= base_url('cms_produk/doUploadFile'); ?>" enctype="multipart/form-data">
+                      <form method="post" action="<?= base_url('cms_produk/doInsertMstKategori'); ?>" enctype="multipart/form-data">
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
-                                    <td class="col-sm-3">Kategori Produk : </td>
-                                    <td><select class="form-control select2" name="addKategori" style="width: 100%">
-                                    <?php foreach ($dataKategori as $result) { ?>
-                                    <option value="<?= $result['NID']; ?>"><?= $result['VNAMA']; ?></option>
-                                    <?php } ?>
-                                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-3">Nama Barang :</td>
+                                    <td class="col-sm-3">Nama Kategori :</td>
                                     <td><input class="form-control" type="text" name="addNama"></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Deskripsi :</td>
                                     <td><textarea class="form-control" name="addDeskripsi"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td class="col-sm-3">Spesifikasi :</td>
-                                    <td><textarea class="form-control" name="addSpesifikasi"></textarea></td>
-                                </tr>
-                                <tr>
-                                  <td class="col-sm-3">Upload File :</td>
-                                  <td><input type="file" name="namaAddFileProduk"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -345,7 +312,7 @@
             </div>
         </div>
     </div>
-<!-- end modal add mstproduk -->
+<!-- end modal add mstkategori -->
 
 <?php $this->load->view('app_js/app_cms');?>
 </body>
