@@ -34,6 +34,8 @@
 				<p>Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor.</p>
 				<br><br>
 				<p><i class="fa fa-map-marker"></i><span> Jl. Lorem Ipsum No. XX, Jakarta-Barat 114400, DKI Jakarta, INDONESIA</span></p>
+				<p><i class="fa fa-phone"></i> Phone (Indonesia) : +6221 9999 878</p>
+      			<p><i class="fa fa-envelope"></i> E-mail : info@citradisplay.com</p>
 			</div>
 			<div class="col-lg-4">
 				<div id="map" style="width:400px;height:400px;">My map will go here</div>
