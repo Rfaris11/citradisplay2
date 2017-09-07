@@ -49,12 +49,12 @@ class Cms_produk extends CI_Controller
 		$where = array(
 			'ID' => $param
 			);
-		$res = $this->M_managementProduct->getSelectedMasterProduct('v_get_selected_master_prod',$where);
+		$res = $this->M_managementProduct->getSelectedMaster('v_get_selected_master_prod',$where);
 		echo json_encode(array("res" => $res));
 	}
 
 	public function doDeleteMasterProduct($nid){
-		$res = $this->M_managementProduct->deleteMstAndDtl('mst_produk','dtl_mst_produk','NID','NID_PRODUK',$nid);
+		$res = $this->M_managementProduct->deleteMstAndDtl($nid);
 		$this->session->set_flashdata('msgAction','Data berhasil dihapus');
 		redirect('admin/daftarProduk');
 	}
@@ -64,16 +64,17 @@ class Cms_produk extends CI_Controller
 		$addNama = $this->input->post('addNama');
 		$addDeskripsi = $this->input->post('addDeskripsi');
 		$addSpesifikasi = $this->input->post('addSpesifikasi');
+		//$namaAddFileProduk = $this->input->post('namaAddFileProduk');
 
 		 // setting konfigurasi upload
-        $config['upload_path'] = './assets/uploads/';
+        $config['upload_path'] = base_url('assets/uploads/');
         $config['allowed_types'] = 'gif|jpg|png';
         // load library upload
         $this->load->library('upload', $config);
-        $this->upload->do_upload('fileProduk');
+        $this->upload->do_upload('namaAddFileProduk');
         $result1 = $this->upload->data();
-        $result = array('fileProduk'=>$result1);
-        $fileProduk = $result['fileProduk']['full_path'];
+        $result = array('namaAddFileProduk'=>$result1);
+        $fileProduk = $result['namaAddFileProduk']['full_path'];
         $data = array(
         	'NID_KATEGORI' => $addKategori,
         	'VURL1' => "0",
@@ -88,11 +89,11 @@ class Cms_produk extends CI_Controller
         if($res>0){
         	$resSelected = $this->M_managementProduct->getSequence('NID','mst_produk');
         	foreach ($resSelected as $cek) {
-        		$pathProduk = $cek['NID'];
+        		$idProduk = $cek['NID'];
         	}
         	
         	$dataDetail = array(
-        		'NID_PRODUK' => $pathProduk,
+        		'NID_PRODUK' => $idProduk,
         		'VURL' => $fileProduk
         		);
 

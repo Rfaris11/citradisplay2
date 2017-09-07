@@ -28,8 +28,8 @@ class M_managementProduct extends CI_Model {
 		return $res->result_array();
 	}
 
-	public function deleteMstAndDtl($tableName1,$tableName2,$pk,$fk,$where){
-		$res = $this->db->query('delete a.*,b.* from '.$tableName1.' a inner join '.$tableName2.' b on a.'.$pk.'=b.'.$fk.' where a.'.$pk.' = '.$where);
+	public function deleteMstAndDtl($where){
+		$res = $this->db->query('delete a.*,b.* from dtl_mst_produk a inner join mst_produk b on b.nid=a.nid_produk where a.nid_produk='.$where);
 		return $res;
 	}
 

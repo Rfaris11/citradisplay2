@@ -331,7 +331,7 @@
                                 </tr>
                                 <tr>
                                   <td class="col-sm-3">Upload File :</td>
-                                  <td><input type="file" name="fileProduk"></td>
+                                  <td><input type="file" name="namaAddFileProduk"></td>
                                 </tr>
                             </tbody>
                         </table>
