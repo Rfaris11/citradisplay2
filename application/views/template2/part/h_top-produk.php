@@ -24,8 +24,8 @@ foreach ($topproduk as $idx => $arr) { ?>
             <div class="card-body py-2">
                 <!--Title-->
                 <h5 class="card-title"><?=$arr['VNAMA'];?></h5>
-                <a href="#" class="btn btn-sm btn-info px-3" nid="<?=$arr['NID'];?>"><i class="fa fa-window-restore ml-1"></i>Read more</a>
-                <a href="#" class="btn btn-sm btn-outline-info px-3" data-toggle="modal" data-target="#modalRegister" onclick="setmodal(this);" nid="<?=$arr['NID'];?>"><i class="fa fa-expand ml-1"></i>Quick</a>
+                <a href="#" class="btn btn-sm btn-info px-3" nid="<?=$arr['NID'];?>"><i class="fa fa-window-restore mr-1"></i>Read more</a>
+                <a href="#" class="btn btn-sm btn-outline-info px-3" data-toggle="modal" data-target="#modalRegister" onclick="setmodal(this);" nid="<?=$arr['NID'];?>"><i class="fa fa-expand mr-1"></i>Quick</a>
             </div>
             </div>
         </div>
