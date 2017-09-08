@@ -67,14 +67,15 @@ class Cms_produk extends CI_Controller
 		//$namaAddFileProduk = $this->input->post('namaAddFileProduk');
 
 		 // setting konfigurasi upload
-        $config['upload_path'] = base_url('assets/uploads/');
+        $config['upload_path'] = 'assets/uploads';
         $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = 'citra_display_'.time();
         // load library upload
         $this->load->library('upload', $config);
         $this->upload->do_upload('namaAddFileProduk');
         $result1 = $this->upload->data();
         $result = array('namaAddFileProduk'=>$result1);
-        $fileProduk = $result['namaAddFileProduk']['full_path'];
+        $fileProduk = $result1['file_name'];
         $data = array(
         	'NID_KATEGORI' => $addKategori,
         	'VURL1' => "0",
@@ -125,5 +126,27 @@ class Cms_produk extends CI_Controller
 		redirect('admin/daftarKategori');
 	}
 
+	public function doUpdateProduk($nid){
+		$editkategori = $this->input->post('editkategori');
+		$editNama = $this->input->post('editNama');
+		$editDeskripsi = $this->input->post('editDeskripsi');
+		$editSpesifikasi = $this->input->post('editSpesifikasi');
+		
+		$data = array(
+			'NID_KATEGORI' => $editkategori,
+			'VNAMA' => $editNama,
+			'VDESKRIPSI' => $editDeskripsi,
+			'VSPESIFIKASI' => $editSpesifikasi
+			);
+		$where = array('NID' => $nid);
+		$res = $this->M_managementProduct->updateMaster('mst_produk',$data,$where);
+		if($res>0){
+			$this->session->set_flashdata('msgAction','Data berhasil diupdate');
+			redirect('admin/daftarProduk');
+		}else{
+			$this->session->set_flashdata('msgAction','Data gagal diupdate');
+			redirect('admin/daftarProduk');
+		}
+	}
 }
 ?>

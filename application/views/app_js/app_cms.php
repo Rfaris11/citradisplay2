@@ -68,10 +68,14 @@ function getSelectedKategori(param){
   /* clear value data sebelumnya */
   $("input, textarea", "#modalEditProduk").val(""); // set each input(texbox), textarea be empty
   $("#editGambar").empty(); // netralisir bagian gambar
+  var id = $(param).attr("nid");
   $.ajax({
     url:"<?= base_url('Cms_produk/showSelectedKategori');?>",
-    data : {id : $(param).attr("nid")},
+    data : {id : id},
     success : function(a){
+      $("#formUpdateProduk").attr("action","<?=base_url('Cms_produk/doUpdateProduk')?>"+"/"+id);
+      $("#editkategori").append("<option value='"+a.res[0].ID_KATEGORI+"' selected='selected'>"+a.res[0].NAMA_KATEGORI);
+      //$("#optionKategori option[value='"+a.res[0].ID_KATEGORI+"']").attr("selected",true).val(a.res[0].NAMA_KATEGORI);
       $("input[name='editNama']").val(a.res[0].NAMA_PRODUK);
       $("textarea[name='editDeskripsi']").val(a.res[0].VDESKRIPSI);
       $("textarea[name='editSpesifikasi']").val(a.res[0].VSPESIFIKASI);
@@ -80,7 +84,7 @@ function getSelectedKategori(param){
       var html = "";
       $.each(a.res, function(index,array){
         html += "<div class='col-xs-4 col-md-4 col-lg-4'>"
-        html += "<a href='#'><img src='<?=base_url();?>" + array.VURL + "' style='width:100%;' alt='Loading . . .'></a>";
+        html += "<a href='#'><img src='<?=base_url('assets/uploads/');?>" + array.VURL + "' style='width:100%;' alt='Loading . . .'></a>";
         html += "</div>";
       });
       $(html).appendTo("#editGambar");
@@ -88,4 +92,11 @@ function getSelectedKategori(param){
     }
   })
 }
+
+$('.modal').on('hidden.bs.modal', function (e) {
+  $(this)
+    .find("input,textarea,select")
+       .val('')
+       .end();
+});
 </script>
