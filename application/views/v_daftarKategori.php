@@ -253,9 +253,9 @@
                     <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Kategori</h4>
                 </div>
+                <form method="post" enctype="multipart" action="" id="formUpdateKategori">
                 <div class="modal-body">
                     <div class="table-responsive">
-                      <form>
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
@@ -267,13 +267,14 @@
                                     <td><textarea class="form-control" name="editDeskripsi"></textarea></td>
                                 </tr>
                             </tbody>
-                            </form>
                         </table>
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
+                    <button type="submit" class="btn btn-sm btn-primary">&nbsp;Update</button>
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">&nbsp;Close</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

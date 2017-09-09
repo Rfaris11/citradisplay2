@@ -148,5 +148,35 @@ class Cms_produk extends CI_Controller
 			redirect('admin/daftarProduk');
 		}
 	}
+
+	public function showSelectedDataKategori(){
+		$param = $this->input->post("id");
+		$where = array(
+			'NID' => $param
+			);
+		$res = $this->M_managementProduct->getSelectedMaster('mst_kategori',$where);
+		echo json_encode(array("res" => $res));
+	}
+
+	public function doUpdateKategori($nid){
+		$editNama = $this->input->post('editNama');
+		$editDeskripsi = $this->input->post('editDeskripsi');
+		$data = array(
+			'VNAMA' => $editNama,
+			'VDESKRIPSI' => $editDeskripsi
+			);
+		$where = array(
+			'NID' => $nid
+			);
+		$res = $this->M_managementProduct->updateMaster('mst_kategori',$data,$where);
+		if($res>0){
+			$this->session->set_flashdata('msgAction','Data berhasil diupdate');
+			redirect('admin/daftarKategori');
+		}else{
+			$this->session->set_flashdata('msgAction','Data gagal diupdate');
+			redirect('admin/daftarKategori');
+		}
+
+	}
 }
 ?>
