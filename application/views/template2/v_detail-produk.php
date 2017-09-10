@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>.: Home :.</title>
+    <title>.: <?=$header['VNAMA']; ?> :.</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -84,6 +84,7 @@
             color: #fff !important;
         }
     </style>
+
     <!-- JQuery -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/jquery-3.1.1.min.js');?>"></script>
 
@@ -117,10 +118,7 @@
                 <div class="full-bg-img flex-center white-text">
                     <ul class="animated fadeIn col-md-12">
                         <li>
-                            <!-- <h1 class="h1-responsive">20 Photos to inspire you to visit Tatra Mountains</h1> -->
-                            <h1 class="h1-responsive">
-                                <!-- <i class="fa fa-cubes fa-1x white-text"></i> -->
-                            </h1>
+                            <h1 class="h1-responsive">20 Photos to inspire you to visit Tatra Mountains</h1>
                         </li>
                         <li>
                             <p>Best places you should see, traditional dishes that you have to try</p>
@@ -154,42 +152,57 @@
 
     <!--Content-->
     <div class="container">
-        <?php 
-        $this->load->view("template2/part/h_carousel");
-        ?>
-
-        <!-- added by dev : visi / misi-->
-        <div class="col-lg-12">
-            <div class="divider-new" style="margin-bottom: 15px;">
-                <h2 class="h2-responsive">Citra Display</h2>
+       <div class="row">
+            <div class="col-lg-12">
+                <div class="divider-new mb-2 mt-3">
+                    <h2 class="h2-responsive">Detail Produk</h2>
+                </div>
+                <br>
             </div>
-            <p class="text-center">Selamat Datang di Website PT. Niti Total Makmur. Kami merupakan perusahaan yang berdiri sejak 2009 bergerak dalam industri Layanan Cetak, Banner, Kartu Nama, Sticker, Brosur, Company Profile, 3D Printing. Kami berada di Ruko Elang Laut Boulevard Blok M2 No.20, Pantai Indah Kapuk (PIK). Temukan berbagai produk terbaik kami (Digital Printing, Business Cards, Offset Printing, Brochure / Flyer, Custom Packaging, Banner) dengan kualitas dan harga jual terbaik yang bisa Anda dapatkan.</p>
-            <hr>
-            <div class="row">
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-cubes fa-5x blue-text" aria-hidden="true"></i>
-                    <p><b><u>Variasi pilihan lengkap</u></b></p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-diamond fa-5x brown-text" aria-hidden="true"></i>
-                    <p><b><u>Produk berkualitas</u></b></p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-money fa-5x green-text" aria-hidden="true"></i>
-                    <p><b><u>Harga bersaing</u></b></p>
+            <div class="col-lg-5">
+                <img src="<?=base_url('assets/uploads/').$header['VURL'];?>" width="100%" class="img-thumbnail" id="body-img1">
+            </div>
+            <div class="col-lg-7">
+                <h4><?=$header['VNAMA']; ?></h4>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><i class="fa fa-newspaper-o mr-1"></i>Uraian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><i class="fa fa-file-image-o mr-1"></i>Gambar</a>
+                    </li>
+                </ul>
+                <!-- Tab panels -->
+                <div class="tab-content card px-3">
+                    <!--Panel 1-->
+                    <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+                        <br>
+                        <label>Deskripsi :</label>
+                        <p class="pl-3"><?=$header['VDESKRIPSI']; ?></p>
+                        <label>Kategori :</label>
+                        <p class="pl-3"><?=$header['VNAMA_KTG']; ?></p>
+                    </div>
+                    <!--/.Panel 1-->
+                    <!--Panel 2-->
+                    <div class="tab-pane fade" id="panel2" role="tabpanel">
+                        <br>
+                        <div class="row pb-3" id="body-img2">
+                        <?php foreach ($img as $idx => $arr) { ?>
+                            <div class="col-lg-4">
+                                <a href="javascript:void(0);" onclick="clickImg(this)">
+                                    <img src="<?=base_url('assets/uploads/').$arr['VURL'];?>" class="img-thumbnail" width="100%" alt="img - <?=$header['VNAMA'].'-'.$idx;?>">
+                                </a>
+                            </div>
+                        <?php } ?>
+                        </div>
+                    </div>
+                    <!--/.Panel 2-->
                 </div>
             </div>
-        </div>
-        <!-- /added by dev : visi / misi-->
-
-        <?php 
-        $this->load->view("template2/part/h_kategori");
-        $this->load->view("template2/part/h_top-produk"); 
-        $this->load->view("template2/part/h_view-modal-produk"); 
-        ?>
+       </div> 
     </div>
     <!--/.Content-->
-
 
     <!--Footer-->
     <?php $this->load->view("template2/komponen/footer"); ?>
@@ -197,7 +210,6 @@
 
 
     <!-- SCRIPTS -->
-
     <!-- Bootstrap dropdown -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/popper.min.js');?>"></script>
 
@@ -207,10 +219,20 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/mdb.min.js');?>"></script>
 
+    <!-- Jquery Hashchange -->
+    <script type="text/javascript" src="<?=base_url('assets/etc/js/jquery.ba-bbq.min.js');?>"></script>
     <script>
         new WOW().init();
-    </script>
+        /* click thumbnail img di modal */
 
+        function clickImg(obj){
+            /* set indikator image yg di pilih */
+            $("#body-img2 a img").removeClass("z-depth-1");
+            $("img", obj).addClass("z-depth-1");
+
+            $("#body-img1").attr("src", $("img", $(obj)).attr("src"));
+        }
+    </script>
 </body>
 
 </html>

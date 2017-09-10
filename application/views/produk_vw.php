@@ -200,7 +200,7 @@
 		if (typeof ktgdef != "undefined") {
 			$(".myKategori div a[href^='#?ktg=" + ktgdef + "&hal']").addClass("list-group-item-info");
 		}
-		else if((typeof ktgdef == "undefined")){
+		else if(typeof ktgdef == "undefined"){
 			$(".myKategori div a[href^='#?ktg=0&hal']").addClass("list-group-item-info");
 		}
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>.: Home :.</title>
+    <title>.: Katalog Produk :.</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -84,6 +84,37 @@
             color: #fff !important;
         }
     </style>
+
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+        .widget-wrapper {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .divider-new {
+            margin-top: 0;
+        }
+
+        .list-group-item.active {
+            background-color: #2bbbad;
+            border-color: #2bbbad
+        }
+
+        .list-group-item:not(.active) {
+            color: #222;
+        }
+
+        .list-group-item:not(.active):hover {
+            color: #666;
+        }
+        .card {
+            font-weight: 300;
+        }
+    </style>
+
     <!-- JQuery -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/jquery-3.1.1.min.js');?>"></script>
 
@@ -117,10 +148,7 @@
                 <div class="full-bg-img flex-center white-text">
                     <ul class="animated fadeIn col-md-12">
                         <li>
-                            <!-- <h1 class="h1-responsive">20 Photos to inspire you to visit Tatra Mountains</h1> -->
-                            <h1 class="h1-responsive">
-                                <!-- <i class="fa fa-cubes fa-1x white-text"></i> -->
-                            </h1>
+                            <h1 class="h1-responsive">20 Photos to inspire you to visit Tatra Mountains</h1>
                         </li>
                         <li>
                             <p>Best places you should see, traditional dishes that you have to try</p>
@@ -154,42 +182,23 @@
 
     <!--Content-->
     <div class="container">
-        <?php 
-        $this->load->view("template2/part/h_carousel");
-        ?>
-
-        <!-- added by dev : visi / misi-->
-        <div class="col-lg-12">
-            <div class="divider-new" style="margin-bottom: 15px;">
-                <h2 class="h2-responsive">Citra Display</h2>
-            </div>
-            <p class="text-center">Selamat Datang di Website PT. Niti Total Makmur. Kami merupakan perusahaan yang berdiri sejak 2009 bergerak dalam industri Layanan Cetak, Banner, Kartu Nama, Sticker, Brosur, Company Profile, 3D Printing. Kami berada di Ruko Elang Laut Boulevard Blok M2 No.20, Pantai Indah Kapuk (PIK). Temukan berbagai produk terbaik kami (Digital Printing, Business Cards, Offset Printing, Brochure / Flyer, Custom Packaging, Banner) dengan kualitas dan harga jual terbaik yang bisa Anda dapatkan.</p>
-            <hr>
-            <div class="row">
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-cubes fa-5x blue-text" aria-hidden="true"></i>
-                    <p><b><u>Variasi pilihan lengkap</u></b></p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-diamond fa-5x brown-text" aria-hidden="true"></i>
-                    <p><b><u>Produk berkualitas</u></b></p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-money fa-5x green-text" aria-hidden="true"></i>
-                    <p><b><u>Harga bersaing</u></b></p>
+        <div class="row">
+            <?php $this->load->view("template2/part/p_box-kategori.php") ?>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="divider-new mb-2">
+                            <h2 class="h2-responsive">Katalog Produk</h2>
+                        </div>
+                    </div>
+                <?php $this->load->view("template2/part/p_card-produk"); ?>
                 </div>
             </div>
         </div>
-        <!-- /added by dev : visi / misi-->
-
-        <?php 
-        $this->load->view("template2/part/h_kategori");
-        $this->load->view("template2/part/h_top-produk"); 
-        $this->load->view("template2/part/h_view-modal-produk"); 
-        ?>
     </div>
     <!--/.Content-->
 
+    <?php $this->load->view("template2/part/p_view-modal-produk"); ?>
 
     <!--Footer-->
     <?php $this->load->view("template2/komponen/footer"); ?>
@@ -197,7 +206,6 @@
 
 
     <!-- SCRIPTS -->
-
     <!-- Bootstrap dropdown -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/popper.min.js');?>"></script>
 
@@ -207,10 +215,12 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?=base_url('assets/template2/js/mdb.min.js');?>"></script>
 
+    <!-- Jquery Hashchange -->
+    <script type="text/javascript" src="<?=base_url('assets/etc/js/jquery.ba-bbq.min.js');?>"></script>
     <script>
         new WOW().init();
     </script>
-
+    <?php $this->load->view("template2/part/p_javascript"); ?>
 </body>
 
 </html>
