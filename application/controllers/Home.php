@@ -15,7 +15,6 @@ class Home extends CI_Controller
 	}
 
 	public function index(){
-		$data['halfCarousel'] = glob('assets/template2/images/half-carousel/*.jpg');
 		$data['carousel'] = glob('assets/template2/images/carousel/*.jpg');
 		$data['kategori'] = $this->Home_md->getListKategori();
 		$data['topproduk'] = $this->Home_md->getListTopProduk();
@@ -24,7 +23,11 @@ class Home extends CI_Controller
 			array_push($CollectID, $key['NID']);
 		}
 		$data["img"] = $this->Home_md->getDetailImgProduk($CollectID);
+
+		/* common as navbar, footer, etc */
+		$data['halfCarousel'] = glob('assets/template2/images/half-carousel/*.jpg');
 		$data["latestProduct"] = $this->Common_md->latestProduct();
+		$data["navKategori"] = $this->Common_md->getListKategori();
 
 		$this->load->view("template2/v_home", $data);
 	}

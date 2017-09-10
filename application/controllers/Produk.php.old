@@ -73,23 +73,11 @@ class Produk extends CI_Controller
 			"numpage" => $this->Produk_md->countPageSearch($this->input->post("keyword"), $perpage)));
 	}
 
-	public function detail_old($id){
-		$data["header"] = $this->Produk_md->getData($id);
-		$data["img"] = $this->Produk_md->getDetailImgProduk($data["header"]["NID"]);
-		$data["latest_product"] = $this->Common_md->latestProduct();
-		$this->load->view('detail_produk_vw', $data);
-	}
-
 	public function detail($id){
 		$data["header"] = $this->Produk_md->getData($id);
 		$data["img"] = $this->Produk_md->getDetailImgProduk($data["header"]["NID"]);
 		$data["latest_product"] = $this->Common_md->latestProduct();
-
-		/* common as navbar, footer, etc */
-		$data['halfCarousel'] = glob('assets/template2/images/half-carousel/*.jpg');
-		$data["latestProduct"] = $this->Common_md->latestProduct();
-		$data["navKategori"] = $this->Common_md->getListKategori();
-		$this->load->view('template2/v_detail-produk', $data);
+		$this->load->view('detail_produk_vw', $data);
 	}
 }
 ?>
