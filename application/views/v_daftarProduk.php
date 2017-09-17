@@ -262,6 +262,8 @@
                                 <tr>
                                     <td class="col-sm-3">Kategori Produk : </td>
                                     <td><select class="form-control select2" name="editkategori" id="editkategori" style="width: 100%">
+                                    <div id="firstChoose">
+                                    </div>
                                     <?php foreach ($dataKategori as $result) { ?>
                                     <option value="<?= $result['NID']; ?>"><?= $result['VNAMA']; ?></option>
                                     <?php } ?>
@@ -333,14 +335,18 @@
                                 </tr>
                                 <tr>
                                   <td class="col-sm-3">Upload File :</td>
-                                  <td><input type="file" name="namaAddFileProduk"></td>
+                                  <td><input type="file" name="namaAddFileProduk0"></td>
                                 </tr>
+                                <div id="inputFilePlus">
+
+                                </div>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
-                    <button type="submit" class="btn btn-sm btn-primary">&nbsp;Save</button></a>
+                    <button type="button" value="0" class="btn btn-sm btn-info" id="addAnotherFile">&nbsp;Add File</button>
+                    <button type="submit" value="0" class="btn btn-sm btn-primary" id="countUpload" name="btnSubmit">&nbsp;Save</button></a>
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">&nbsp;Close</button>
                     </form>
                 </div>

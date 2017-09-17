@@ -60,23 +60,12 @@ class Cms_produk extends CI_Controller
 	}
 
 	public function doUploadFile(){
+		$countUpload = $this->input->post('btnSubmit');
 		$addKategori = $this->input->post('addKategori');
 		$addNama = $this->input->post('addNama');
 		$addDeskripsi = $this->input->post('addDeskripsi');
 		$addSpesifikasi = $this->input->post('addSpesifikasi');
-		//$namaAddFileProduk = $this->input->post('namaAddFileProduk');
-
-		 // setting konfigurasi upload
-        $config['upload_path'] = 'assets/uploads';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['file_name'] = 'citra_display_'.time();
-        // load library upload
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('namaAddFileProduk');
-        $result1 = $this->upload->data();
-        $result = array('namaAddFileProduk'=>$result1);
-        $fileProduk = $result1['file_name'];
-        $data = array(
+		$data = array(
         	'NID_KATEGORI' => $addKategori,
         	'VURL1' => "0",
         	'VURL2' => "0",
@@ -86,9 +75,44 @@ class Cms_produk extends CI_Controller
         	'VSPESIFIKASI' => $addSpesifikasi,
         	'NID_MERK' => "0"
         	);
+		//$namaAddFileProduk = $this->input->post('namaAddFileProduk');
+
+		 // setting konfigurasi upload
+        $config['upload_path'] = 'assets/uploads';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = 'citra_display_'.time();
+        // load library upload
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('namaAddFileProduk0');
+        $result1 = $this->upload->data();
+        $result = array('namaAddFileProduk0'=>$result1);
+        $fileProduk = $result1['file_name'];
+
         $res = $this->M_managementProduct->insertMaster('mst_produk',$data);
+        $resSelected = $this->M_managementProduct->getSequence('NID','mst_produk');
+        	foreach ($resSelected as $cek) {
+        		$idProduk = $cek['NID'];
+        	}
+
+        if($countUpload > 0){
+        	for($i=0;$i<=$countUpload;){
+        		$this->upload->do_upload('namaAddFileProduk'.$i);
+        		$result1 = $this->upload->data();
+       			$result = array('namaAddFileProduk'.$i => $result1);
+        		$fileProduk = $result1['file_name'];
+
+        		$dataDetail = array(
+        		'NID_PRODUK' => $idProduk,
+        		'VURL' => $fileProduk
+        		);
+        		$res = $this->M_managementProduct->insertMaster('dtl_mst_produk',$dataDetail);
+        		$i++;
+        	}
+        	$this->session->set_flashdata('msgAction','Data berhasil ditambah');
+        	redirect('admin/daftarProduk');
+        }
         if($res>0){
-        	$resSelected = $this->M_managementProduct->getSequence('NID','mst_produk');
+        	//$resSelected = $this->M_managementProduct->getSequence('NID','mst_produk');
         	foreach ($resSelected as $cek) {
         		$idProduk = $cek['NID'];
         	}
@@ -103,7 +127,10 @@ class Cms_produk extends CI_Controller
         		$this->session->set_flashdata('msgAction','Data berhasil ditambah');
         		redirect('admin/daftarProduk');
         	}
+
+        	
         }
+
 	}
 
 	public function doInsertMstKategori(){

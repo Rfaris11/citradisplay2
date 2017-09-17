@@ -113,7 +113,20 @@ function getSelectedSearchData(param){
 
 }
 
+$('#addAnotherFile').on('click',function(e){
+  e.preventDefault();
+  var nilai = this.value;
+  var namafile = parseInt(nilai)+parseInt('1');
+  $("#addAnotherFile").val(namafile);
+  $("#countUpload").val(namafile);
+  var html = "<tr>";
+  html += "<td><input type='file' name='namaAddFileProduk"+namafile+"'></td></tr>";
+  $(html).appendTo("#inputFilePlus");
+})
+
 $('.modal').on('hidden.bs.modal', function (e) {
+  $("#inputFilePlus").empty();
+  $("#firstChoose").empty();
   $(this)
     .find("input,textarea,select")
        .val('')
