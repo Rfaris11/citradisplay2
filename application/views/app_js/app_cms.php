@@ -28,7 +28,11 @@ function getListKategori(param){
 
       html += "<td>" + a.list[0].VNAMA + "</td>";
       html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
-      html += "</tr>";
+      html += "<td><button type='button' class='btn btn-info' name='btnEdit' data-toggle='modal'";
+      html += "data-target='#modalEditKategori' onclick='getSelectedSearchData(this);' nid='"+ a.list[0].NID +"'>Edit</button>";
+      html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMstKategori/')?>"+ a.list[0].NID +"'><button type='button'";
+      html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";
+      html += "</td></tr>";
       $("#myResultMasterKategori").empty();
       $(html).appendTo("#myResultMasterKategori");
 
@@ -46,11 +50,11 @@ function getList(param){
 
       html += "<td>" + a.list[0].VNAMA + "</td>";
       html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
-      /*html += "<td><button type='button' class='btn btn-info' name='btnEdit' data-toggle='modal'";
-      html += "data-target='#modalEditProduk' onclick='getSelectedKategori(this)' nid='<?=$res['NID'];?>'>Edit</button>";
-      html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMasterProduct/').$res['NID']; ?>'><button type='button'";
-      html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";*/
-      html += "<tr>";
+      html += "<td><button type='button' class='btn btn-info' name='btnEdit' data-toggle='modal'";
+      html += "data-target='#modalEditProduk' onclick='getSelectedKategori(this);' nid='"+ a.list[0].NID +"'>Edit</button>";
+      html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMasterProduct/')?>"+ a.list[0].NID +"'><button type='button'";
+      html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";
+      html += "</td><tr>";
       $("#myResultMasterProduct").empty();
       $(html).appendTo("#myResultMasterProduct");
     }

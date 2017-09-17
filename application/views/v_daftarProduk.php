@@ -132,6 +132,7 @@
               <div class="form-group">
                 <label>Nama Produk</label>
                 <select name="listMstProduk" id="myDropdown1" class="form-control select2" style="width: 100%;">
+                  <option value="" selected="selected">---Silahkan Pilih---</option>
                 <?php foreach ($data as $r) {
                 ?>
                   <option value="<?= $r['NID']; ?>"><?= $r['VNAMA']; ?></option>
