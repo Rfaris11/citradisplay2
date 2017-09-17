@@ -262,8 +262,6 @@
                                 <tr>
                                     <td class="col-sm-3">Kategori Produk : </td>
                                     <td><select class="form-control select2" name="editkategori" id="editkategori" style="width: 100%">
-                                    <div id="firstChoose">
-                                    </div>
                                     <?php foreach ($dataKategori as $result) { ?>
                                     <option value="<?= $result['NID']; ?>"><?= $result['VNAMA']; ?></option>
                                     <?php } ?>
@@ -338,7 +336,6 @@
                                   <td><input type="file" name="namaAddFileProduk0"></td>
                                 </tr>
                                 <div id="inputFilePlus">
-
                                 </div>
                             </tbody>
                         </table>
