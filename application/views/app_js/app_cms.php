@@ -79,7 +79,7 @@ function getSelectedKategori(param){
     success : function(a){
       $("#formUpdateProduk").attr("action","<?=base_url('Cms_produk/doUpdateProduk')?>"+"/"+id);
       /*$("#editkategori").append($("<option value = '"+a.res[0].ID_KATEGORI+"' selected='selected'>"+a.res[0].NAMA_KATEGORI+"</option>"));*/
-      $("#editkategori").val(a.res[0].ID_KATEGORI).attr("selected",true);
+      $("#editkategori").val(a.res[0].ID_KATEGORI).attr("selected",true).trigger("change");
       //$("#optionKategori option[value='"+a.res[0].ID_KATEGORI+"']").attr("selected",true).val(a.res[0].NAMA_KATEGORI);
       $("input[name='editNama']").val(a.res[0].NAMA_PRODUK);
       $("textarea[name='editDeskripsi']").val(a.res[0].VDESKRIPSI);

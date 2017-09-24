@@ -136,9 +136,22 @@ class Cms_produk extends CI_Controller
 	public function doInsertMstKategori(){
 		$addNama = $this->input->post('addNama');
 		$addDeskripsi = $this->input->post('addDeskripsi');
+
+		//config upload file
+		$config['upload_path'] = 'assets/uploads/kategori';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = 'citra_display_'.time();
+        // load library upload
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('namaAddFileKategori');
+        $result1 = $this->upload->data();
+        $result = array('namaAddFileKategori'=>$result1);
+        $fileKategori = $result1['file_name'];
+		//end config file
 		$data = array(
 			'VNAMA' => $addNama,
-			'VDESKRIPSI' => $addDeskripsi
+			'VDESKRIPSI' => $addDeskripsi,
+			'VURL' => $fileKategori
 			);
 		$res = $this->M_managementProduct->insertMaster('mst_kategori',$data);
 		if($res>0){
