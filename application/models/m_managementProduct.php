@@ -29,12 +29,17 @@ class M_managementProduct extends CI_Model {
 	}
 
 	public function deleteMstAndDtl($where){
-		$res = $this->db->query('delete a.*,b.* from dtl_mst_produk a inner join mst_produk b on b.nid=a.nid_produk where a.nid_produk='.$where);
+		$res = $this->db->query('delete a.*,b.* from dtl_mst_produk a right join mst_produk b on b.nid=a.nid_produk where b.nid='.$where);
 		return $res;
 	}
 
 	public function deleteMstKategoriAndDtl($where){
-		$res = $this->db->query('delete a.*,b.*,c.* from dtl_mst_produk a inner join mst_produk b on b.nid = a.nid_produk inner join mst_kategori c on c.nid = b.nid_kategori where c.nid='.$where);
+		$res = $this->db->query('delete a.*,b.*,c.* from dtl_mst_produk a right join mst_produk b on b.nid = a.nid_produk right join mst_kategori c on c.nid = b.nid_kategori where c.nid='.$where);
+		return $res;
+	}
+
+	public function updateMaster($tableName,$data,$where){
+		$res = $this->db->update($tableName,$data,$where);
 		return $res;
 	}
 }

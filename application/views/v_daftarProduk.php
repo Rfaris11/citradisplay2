@@ -253,14 +253,14 @@
                     <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit Produk</h4>
                 </div>
+                <form method="post" id="formUpdateProduk" enctype="multipart" action="">
                 <div class="modal-body">
                     <div class="table-responsive">
-                      <form>
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
                                     <td class="col-sm-3">Kategori Produk : </td>
-                                    <td><select class="form-control select2" name="editkategori" style="width: 100%">
+                                    <td><select class="form-control select2" name="editkategori" id="editkategori" style="width: 100%">
                                     <?php foreach ($dataKategori as $result) { ?>
                                     <option value="<?= $result['NID']; ?>"><?= $result['VNAMA']; ?></option>
                                     <?php } ?>
@@ -280,7 +280,6 @@
                                     <td><textarea class="form-control" name="editSpesifikasi"></textarea></td>
                                 </tr>
                             </tbody>
-                            </form>
                         </table>
                         <div id="editGambar">
                           
@@ -288,8 +287,10 @@
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
+                    <button type="" class="btn btn-sm btn-primary">&nbsp;Update</button>
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">&nbsp;Close</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
