@@ -333,7 +333,7 @@
                                 </tr>
                                 <tr>
                                   <td class="col-sm-3">Upload File :</td>
-                                  <td><input type="file" name="namaAddFileProduk0"></td>
+                                  <td><input type="file" name="namaAddFileProduk0" required="required"></td>
                                 </tr>
                                 <div id="inputFilePlus">
                                 </div>
