@@ -75,7 +75,7 @@ class Produk_md extends CI_Model
 
 	function getData($id){
 		$this->db->where("NID",$id);
-		return $this->db->get("V_DETAIL_PRODUK")->row_array();
+		return $this->db->get("v_detail_produk")->row_array();
 	}
 
 	function getDetailImgProduk($param){

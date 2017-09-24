@@ -46,6 +46,10 @@ function getList(param){
 
       html += "<td>" + a.list[0].VNAMA + "</td>";
       html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
+      /* start : added by wgn94 */
+      html += '<td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditProduk" onclick="getSelectedKategori(this);" nid=' + a.list[0].NID + '>Edit</button>&nbsp;';
+      html += '<a href="<?= base_url('Cms_produk/doDeleteMasterProduct/')?>' + a.list[0].NID + '"><button type="button" class="btn btn-danger" name="btnDelete">Delete</button></a></td>';
+      /* end : added by wgn94 */
       // html += "namaProduk : " + a.list[0].VNAMA+"<br>";
       // html += "deskripsi : " + a.list[0].VDESKRIPSI+"<br>";
       /*html += a.list[0].VNAMA+"&nbsp";
