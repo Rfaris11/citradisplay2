@@ -14,12 +14,12 @@ class Home_md extends CI_Model
 
 	function getListKategori(){
 		$this->db->order_by("NID","ASC");
-		return $this->db->get("MST_KATEGORI")->result_array();
+		return $this->db->get("mst_kategori")->result_array();
 	}
 
 	function getListTopProduk(){
 		$this->db->limit(8,0);
-		return $this->db->get("V_DETAIL_PRODUK")->result_array();
+		return $this->db->get("v_detail_produk")->result_array();
 	}
 
 	function getDetailImgProduk($param){

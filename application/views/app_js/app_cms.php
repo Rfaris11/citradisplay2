@@ -54,7 +54,7 @@ function getList(param){
       html += "data-target='#modalEditProduk' onclick='getSelectedKategori(this);' nid='"+ a.list[0].NID +"'>Edit</button>";
       html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMasterProduct/')?>"+ a.list[0].NID +"'><button type='button'";
       html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";
-      html += "</td><tr>";
+      html += "<tr>";
       $("#myResultMasterProduct").empty();
       $(html).appendTo("#myResultMasterProduct");
     }
