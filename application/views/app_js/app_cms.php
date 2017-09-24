@@ -28,7 +28,11 @@ function getListKategori(param){
 
       html += "<td>" + a.list[0].VNAMA + "</td>";
       html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
-      html += "</tr>";
+      html += "<td><button type='button' class='btn btn-info' name='btnEdit' data-toggle='modal'";
+      html += "data-target='#modalEditKategori' onclick='getSelectedSearchData(this);' nid='"+ a.list[0].NID +"'>Edit</button>";
+      html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMstKategori/')?>"+ a.list[0].NID +"'><button type='button'";
+      html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";
+      html += "</td></tr>";
       $("#myResultMasterKategori").empty();
       $(html).appendTo("#myResultMasterKategori");
 
@@ -46,8 +50,10 @@ function getList(param){
 
       html += "<td>" + a.list[0].VNAMA + "</td>";
       html += "<td>" + a.list[0].VDESKRIPSI + "</td>";
-      html += '<td><button type="button" class="btn btn-info" name="btnEdit" data-toggle="modal" data-target="#modalEditProduk" onclick="getSelectedKategori(this);" nid=' + a.list[0].NID + '>Edit</button>&nbsp;';
-      html += '<a href="<?= base_url('Cms_produk/doDeleteMasterProduct/')?>' + a.list[0].NID + '"><button type="button" class="btn btn-danger" name="btnDelete">Delete</button></a></td>';
+      html += "<td><button type='button' class='btn btn-info' name='btnEdit' data-toggle='modal'";
+      html += "data-target='#modalEditProduk' onclick='getSelectedKategori(this);' nid='"+ a.list[0].NID +"'>Edit</button>";
+      html += "&nbsp;<a href='<?= base_url('Cms_produk/doDeleteMasterProduct/')?>"+ a.list[0].NID +"'><button type='button'";
+      html += "class='btn btn-danger' name='btnDelete'>Delete</button></a></td>";
       html += "<tr>";
       $("#myResultMasterProduct").empty();
       $(html).appendTo("#myResultMasterProduct");
@@ -107,7 +113,20 @@ function getSelectedSearchData(param){
 
 }
 
+$('#addAnotherFile').on('click',function(e){
+  e.preventDefault();
+  var nilai = this.value;
+  var namafile = parseInt(nilai)+parseInt('1');
+  $("#addAnotherFile").val(namafile);
+  $("#countUpload").val(namafile);
+  var html = "<tr>";
+  html += "<td><input type='file' name='namaAddFileProduk"+namafile+"'></td></tr>";
+  $(html).appendTo("#inputFilePlus");
+})
+
 $('.modal').on('hidden.bs.modal', function (e) {
+  $("#inputFilePlus").empty();
+  $("#firstChoose").empty();
   $(this)
     .find("input,textarea,select")
        .val('')
