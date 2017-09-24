@@ -302,6 +302,10 @@
                                     <td class="col-sm-3">Deskripsi :</td>
                                     <td><textarea class="form-control" name="addDeskripsi"></textarea></td>
                                 </tr>
+                                <tr>
+                                  <td class="col-sm-3">Upload File :</td>
+                                  <td><input type="file" name="namaAddFileKategori"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
