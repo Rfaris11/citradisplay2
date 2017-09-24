@@ -27,7 +27,7 @@ class Login extends CI_Controller
 			redirect('Admin');
 		}else{
 			$userName = $_POST['userName'];
-			$userPassword = $_POST['userPassword'];
+			$userPassword = md5($_POST['userPassword']);
 			$where = array(
 				'VUSERNAME' => $userName,
 				'VPASSWORD' => $userPassword
@@ -51,29 +51,5 @@ class Login extends CI_Controller
 			}
 		}
 	}
-
-	public function auten2(){
-		if($_POST['userName'] == null or $_POST['userPassword'] == null){
-			redirect('Admin');
-		}else{
-			$userName = $_POST['userName'];
-			$userPassword = $_POST['userPassword'];
-			$where = array(
-				'VUSERNAME' => $userName,
-				'VPASSWORD' => $userPassword
-				);
-			$cek = $this->M_login->cekLogin('mst_users',$where);
-			if(count($cek)>0){
-				foreach ($cek as $result) {
-					$userNameSession = $result['VUSERNAME'];
-					echo "debug";
-					echo $result['VUSERNAME'];
-				}
-				
-		}
-
-	}
-
-}
 }
 ?>
