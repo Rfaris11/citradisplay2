@@ -270,15 +270,15 @@
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Nama Barang :</td>
-                                    <td><input class="form-control" type="text" name="editNama"></td>
+                                    <td><input class="form-control" type="text" name="editNama" required="required"></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Deskripsi :</td>
-                                    <td><textarea class="form-control" name="editDeskripsi"></textarea></td>
+                                    <td><textarea class="form-control" name="editDeskripsi" required="required"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Spesifikasi :</td>
-                                    <td><textarea class="form-control" name="editSpesifikasi"></textarea></td>
+                                    <td><textarea class="form-control" name="editSpesifikasi" required="required"></textarea></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -321,15 +321,15 @@
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Nama Barang :</td>
-                                    <td><input class="form-control" type="text" name="addNama"></td>
+                                    <td><input class="form-control" type="text" name="addNama" required="required"></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Deskripsi :</td>
-                                    <td><textarea class="form-control" name="addDeskripsi"></textarea></td>
+                                    <td><textarea class="form-control" name="addDeskripsi" required="required"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Spesifikasi :</td>
-                                    <td><textarea class="form-control" name="addSpesifikasi"></textarea></td>
+                                    <td><textarea class="form-control" name="addSpesifikasi" required="required"></textarea></td>
                                 </tr>
                                 <tr>
                                   <td class="col-sm-3">Upload File :</td>

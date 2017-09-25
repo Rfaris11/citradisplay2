@@ -296,15 +296,15 @@
                             <tbody>
                                 <tr>
                                     <td class="col-sm-3">Nama Kategori :</td>
-                                    <td><input class="form-control" type="text" name="addNama"></td>
+                                    <td><input class="form-control" type="text" name="addNama" required="required"></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-3">Deskripsi :</td>
-                                    <td><textarea class="form-control" name="addDeskripsi"></textarea></td>
+                                    <td><textarea class="form-control" name="addDeskripsi" required="required"></textarea></td>
                                 </tr>
                                 <tr>
                                   <td class="col-sm-3">Upload File :</td>
-                                  <td><input type="file" name="namaAddFileKategori"></td>
+                                  <td><input type="file" name="namaAddFileKategori" required="required"></td>
                                 </tr>
                             </tbody>
                         </table>
