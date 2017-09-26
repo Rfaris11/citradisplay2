@@ -120,7 +120,7 @@ $('#addAnotherFile').on('click',function(e){
   $("#addAnotherFile").val(namafile);
   $("#countUpload").val(namafile);
   var html = "<tr>";
-  html += "<td><input type='file' name='namaAddFileProduk"+namafile+"'></td></tr>";
+  html += "<td><input type='file' required name='namaAddFileProduk"+namafile+"'></td></tr>";
   $(html).appendTo("#inputFilePlus");
 })
 
