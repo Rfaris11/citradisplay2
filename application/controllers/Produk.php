@@ -65,7 +65,7 @@ class Produk extends CI_Controller
 		foreach ($data["list"] as $key) {
 			array_push($collectID, $key["NID"]);
 		}
-		$data["img"] = $this->Produk_md->getDetailImgProduk($collectID);
+		$data["img"] = (count($collectID) > 0) ? $this->Produk_md->getDetailImgProduk($collectID) : array();
 		echo json_encode(array(
 			"list" => $data["list"],
 			"img" => $data["img"],

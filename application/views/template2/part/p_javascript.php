@@ -15,7 +15,8 @@
 		hashal = (typeof getUrlVars()["hal"] === "undefined") ? 1 : getUrlVars()["hal"];
 		hascari = getUrlVars()["cari"];
 
-        (typeof hasktg === "undefined" && typeof hascari !== "undefined") ? searchProduk(hascari, hashal) : getListProdukBykategori(0, hashal);
+        (typeof hasktg === "undefined" && typeof hascari !== "undefined") ? searchProduk(hascari, hashal) : null;
+        (typeof hasktg !== "undefined") ? getListProdukBykategori(hasktg, hashal) : null;
         // (typeof hasktg === "undefined" && typeof hascari !== "undefined") ? console.log("true") : console.log("else");
 
         changeKategoriAktif();
@@ -68,6 +69,10 @@
                 bindCard(a.list, "listProduk");
                 bindLibraryDetailImg(a.img, "my-detailImg");
                 bindPagination("cari="+key.split("+").join(" "), a.numpage, page, "pagination");
+                if (a.list.length == 0) {
+                    var html = "<u>Mohon maaf, pencarian <strong> " + key.split("+").join(" ") + " </strong>tidak ditemukan.</u>";
+                    $(html).appendTo("#searchNotif");
+                }
             }
         });
     }
@@ -115,6 +120,7 @@
 
     /* binding pagination and set highlight active */
     function bindPagination(param1, totalpage, pagenow, idSelector){
+        $("#searchNotif").empty();
     	var html = '<li class="page-item active">Halaman</li>';
     	for (var i = 1; i <= totalpage; i++) {
     		isAktif = (pagenow == i) ? "active" : "";

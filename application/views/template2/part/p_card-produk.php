@@ -5,6 +5,7 @@
 	    <ul class="pagination pagination-circle pg-blue mb-0" id="pagination">
 	    </ul>
 	</nav>
+    <span id="searchNotif"></span>
 <hr>
 
 <!--Text-->

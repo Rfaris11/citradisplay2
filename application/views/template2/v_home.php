@@ -113,7 +113,7 @@
             <div class="divider-new" style="margin-bottom: 15px;">
                 <h2 class="h2-responsive">Citra Display</h2>
             </div>
-            <p class="text-center">Selamat Datang di Website PT. Niti Total Makmur. Kami merupakan perusahaan yang berdiri sejak 2009 bergerak dalam industri Layanan Cetak, Banner, Kartu Nama, Sticker, Brosur, Company Profile, 3D Printing. Kami berada di Ruko Elang Laut Boulevard Blok M2 No.20, Pantai Indah Kapuk (PIK). Temukan berbagai produk terbaik kami (Digital Printing, Business Cards, Offset Printing, Brochure / Flyer, Custom Packaging, Banner) dengan kualitas dan harga jual terbaik yang bisa Anda dapatkan.</p>
+            <p class="text-center">Perusahaan Kami telah berdiri sejak 1996 dan mengkhususkan dalam penyediaan berbagai jenis Flex Banner dan peralatan Portable Display sesuai karakter yang dibutuhkan, terutama sebagai berikut : Roll-up series; POP-UP Display series; Alu-line pavement stand series (or A-boards series); Slanting standing poster; Portable folding brochure shelf series; Rectractable banner stand series; L banner stand series; x banner stand series (or Y banner stand series); Wall picture shelfseries; Promoter series; Triple banner series; Twin banner series; show screen-one sided, etc.</p>
             <hr>
             <div class="row">
                 <div class="col-lg-4 text-center">
