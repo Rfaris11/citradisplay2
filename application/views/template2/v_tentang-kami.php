@@ -115,7 +115,9 @@
                 <div class="text-center mb-3">
                     <img src="<?=base_url('assets/images/tentang_kami/Logo_CPM.jpg');?>">
                 </div>
-                <p>Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor. Lorem ipsum sit dolor.</p>
+                <p>Perusahaan Kami telah berdiri sejak 1996 dan mengkhususkan dalam penyediaan berbagai jenis Flex Banner dan peralatan Portable Display sesuai karakter yang dibutuhkan, terutama sebagai berikut : Roll-up series; POP-UP Display series; Alu-line pavement stand series (or A-boards series); Slanting standing poster; Portable folding brochure shelf series; Rectractable banner stand series; L banner stand series; x banner stand series (or Y banner stand series); Wall picture shelfseries; Promoter series; Triple banner series; Twin banner series; show screen-one sided, etc.
+                </p>
+                <p>kami berharap dapat menjalin hubungan bisnis jangka panjang yang baik dengan pelanggan kami. Silahkan hubungi kami untuk detail informasi produk.</p>
                 <br>
                 <p class="mb-0"><i class="fa fa-home mr-3"></i> Jl. Lorem Ipsum No. XX, Jakarta-Barat 114400, DKI Jakarta, INDONESIA</p>
                 <p class="mb-0"><i class="fa fa-envelope mr-3"></i> info@citradisplay.com</p>
